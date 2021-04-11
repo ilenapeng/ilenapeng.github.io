@@ -140,7 +140,8 @@ article {
 }
 
 @media screen and (max-width: 900px){
-  .content {display:block;}
   article {padding-left:3rem; padding-right:3rem;}
   a.linktitle{font-size:0.9em;}
 }
+
+@media screen and (max-width: 700px){.datavis {display:block;}}
