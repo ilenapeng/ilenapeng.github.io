@@ -43,6 +43,8 @@ a.link {
 a.linktitle {
   font-size:1em;font-family: 'Lato', sans-serif;font-weight: 400;text-align:left;}
 a{text-decoration: none}
+span {background-color: rgba(102,143,128,0.5);   font-family: 'Lato', sans-serif;
+  font-weight:400}
 
 img {max-width: 100%;}
 img.vertical{
@@ -59,6 +61,14 @@ article {
 .about {max-width: 75%;}
 
 .datavis {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 5rem;
+    grid-row-gap: 1rem;
+    text-align: center;
+}
+
+.projects {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 5rem;
@@ -137,6 +147,7 @@ article {
 @media screen and (max-width: 1200px){
   .about {max-width:100%;}
   .datavis {display: grid; grid-template-columns: 1fr 1fr;grid-gap:5rem;}
+  .projects {display: grid; grid-template-columns: 1fr 1fr;grid-gap:5rem;}
 }
 
 @media screen and (max-width: 900px){
@@ -144,4 +155,7 @@ article {
   a.linktitle{font-size:0.9em;}
 }
 
-@media screen and (max-width: 700px){.datavis {display:block;}}
+@media screen and (max-width: 700px){
+  .datavis {display:block;}
+  .projects {display:block;}
+}
