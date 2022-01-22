@@ -8,8 +8,9 @@ body * {
   -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align:center;
+  font-weight: 400;
   color: #000;
 }
 
@@ -29,36 +30,34 @@ h2 {
 
 }
 h3 {
-  font-size:1em;font-family: 'Lato', sans-serif;font-weight: 400;text-align:left;}
+  font-size:1em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  text-align:left;}
+
 p {
   font-size: 1em;
   text-align: left;
   font-family: 'Lato', sans-serif;
   font-weight:300;
+  text-align:left;
 }
-em {
-  font-family:'Lato', sans-serif; font-weight:300;}
-a.link {
-  font-family:'Lato', sans-serif; font-weight:300;line-height:2rem;}
-a.linktitle {
-  font-size:1em;font-family: 'Lato', sans-serif;font-weight: 400;text-align:left;}
-a{text-decoration: none}
+a {text-decoration: none;}
+em {font-family:'Lato', sans-serif; font-weight:300;}
 span {background-color: rgba(102,143,128,0.5);   font-family: 'Lato', sans-serif;
   font-weight:400}
 
-img {max-width: 100%;}
+img {max-height: 150px;}
 img.vertical{
   width:100%;
-  height:225px;
+  height:180px;
   object-fit: cover;
   object-position: top;}
 
 article {
-  padding-left: 8rem;
-  padding-right: 8rem;
+  padding-left: 12rem;
+  padding-right: 12rem;
 }
-
-.about {max-width: 75%;}
 
 .datavis {
     display: grid;
@@ -75,6 +74,11 @@ article {
     grid-row-gap: 1rem;
     text-align: center;
 }
+
+/* Specifying styles for the writing page */
+article.page a.linktitle {
+font-size:1em;font-family: 'Lato', sans-serif;font-weight: 400;text-align:left;}
+article.page a {font-weight: 300; text-decoration: none;}
 
 /*navbar*/
 .navbar{
