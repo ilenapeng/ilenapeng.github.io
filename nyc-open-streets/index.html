@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" href="favicon.ico?" type="image/x-icon">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        body {
+            margin:auto;
+            padding:50px 10px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .serif {
+            font-family: 'Lora', serif;
+        }
+        .sans-serif {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* choose a light or dark theme to add to the body tag. */
+        .dark-theme {
+            background-color: #535353;
+            color: #fbfbfb;
+        }
+        .light-theme {
+            background-color: white;
+            color: black;
+        }
+
+        .header {
+            padding-top:20px;
+            padding-bottom:20px;
+        }
+
+        .story-body, .header, .chart-section, .footer {
+            margin:auto;
+            max-width: 700px;
+        }
+
+        .footer {
+            padding-top:20px;
+            padding-bottom:20px;
+        }
+
+        .chart-section.wide{
+            width:100%;
+            max-width:1200px;
+        }
+
+        .chart-section.wide p.chart-title {
+            width:100%;
+            max-width:700px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .chart-section.wide p.chart-subhead {
+            width:100%;
+            max-width:700px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+
+        /* text styles */
+
+        p.kicker {
+            font-size:1rem;
+            text-transform:uppercase;
+        }
+
+        .text-center {
+            text-align:center;
+        }
+
+        h1.headline {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+            margin-top: 1rem;
+            font-weight: 800;
+            color: #E4FF1A;
+        }
+
+        h2.subhead {
+            font-size: 1.4rem;
+            line-height: 2rem;
+            margin-bottom:0;
+            margin-top: 15px;
+            font-weight: 400;
+        }
+
+        p.body-text {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-top:0;
+            margin-bottom:15px;
+        }
+
+        h3.section-head {
+            font-size:2rem;
+            margin:40px 0 10px 0;
+            font-weight:700;
+            line-height:1.3;
+        }
+
+        .byline {
+            font-size: 1.1rem;
+            line-height: 0.75;
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            line-height: 1;
+            margin-top: 10px;
+            font-weight:400;
+            text-transform:uppercase;
+            letter-spacing:0.5px;
+        }
+
+
+        p.note {
+            font-size:0.85rem;
+        }
+
+        a {
+            color: #2DFFF1;
+        }
+
+        /* chart styles */
+
+        .chart-section {
+            width:100%;
+            max-width:1200px;
+            padding:20px 0px;
+        }
+
+        .story-body .chart-section {
+            padding-top:0px;
+        }
+
+
+        .chart-row {
+            display:flex;
+            justify-content: space-between;
+            margin-top:20px;
+        }
+
+        p.chart-title {
+            font-size:1.3rem;
+            font-weight:700;
+            max-width:700px;
+            margin:0px auto 5px auto;
+        }
+        p.chart-subhead {
+            margin:0 auto;
+            max-width:700px;
+            font-size:1rem;
+            margin-bottom:15px;
+        }
+
+        p.chart-label {
+            margin:0 0 5px 0;
+            font-size:0.85rem;
+            text-transform:uppercase;
+            font-weight:600;
+        }
+
+        .chart-row .chart {
+            width:100%;
+            padding-right:15px;
+            min-width:calc(25% - 15px);
+
+        }
+
+
+
+        p.chart-source {
+            font-size:0.85rem;
+            margin:0;
+        }
+
+
+
+
+
+        /* photos */
+
+        .photo-section {
+            padding:30px 0px;
+            width:100%;
+            margin:auto;
+            display:flex;
+            max-width:1200px;
+        }
+
+        .photo {
+            width:100%;
+            padding-right:15px;
+        }
+        .photo img {
+            width:100%;	
+        }
+
+        p.caption {
+            font-size:0.9rem;
+            margin:0;
+        }
+
+
+
+        /* mobile */
+
+        @media (max-width:700px) {
+
+            .chart-row {
+                display:block;
+            }
+
+            .chart-row .chart {
+                padding:0;
+            }
+
+            .photo-section {
+                display:block;
+            }
+            .photo {
+                padding:0;
+            }
+
+        }
+    </style>
+    <style>
+        /* These are the styles for ai2html -- map */
+        
+        #g-map-laptop, #g-map-medium, #g-map-mobile {
+            display: none;
+        }
+
+        @media (max-width: 490px) {
+            h1.headline {
+                font-size: 2em;
+            }
+            h2.subhead {
+                font-size: 1.2em;
+            }
+            #g-map-mobile {
+                display: block;
+            }
+        }
+
+        @media (min-width: 490px) and (max-width: 620px) {
+            #g-map-laptop {
+                display: block;
+            }
+        }
+
+        @media (min-width: 620px)  {
+            #g-map-medium {
+                display: block;
+            }
+        }
+
+        /* These are the styles for ai2html -- pct active */
+
+        #g-pct-active-laptop, #g-pct-active-medium, #g-pct-active-mobile {
+            display: none;
+        }
+
+        @media (max-width: 490px) {
+            #g-pct-active-mobile {
+                display: block;
+            }
+        }
+
+        @media (min-width: 490px) and (max-width: 620px) {
+            #g-pct-active-laptop {
+                display: block;
+            }
+        }
+
+        @media (min-width: 620px)  {
+            #g-pct-active-medium {
+                display: block;
+            }
+        }
+
+    </style>
+    
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700&display=swap" rel="stylesheet">
+      
+    <title>NYC's "Open" Streets</title>
+  </head>
+
+  <body class="dark-theme"> <!-- all of the content on your html page goes inside the body -->
+
+    <div class="header">
+      <!-- <p class="kicker">Optional kicker</p> -->
+      <h1 class="headline">NYC's "Open" Streets</h1>
+      <h2 class="subhead">A look back on the past two years of NYC’s Open Streets program</h2>
+      <p class="byline">By Ilena Peng</p>
+      <p class="date">March 9, 2022</p>
+    </div>
+
+    <div class="story-body">
+      <p class="body-text serif">The Open Streets program was supposed to be an innovative approach to address inequities around outdoor access. 
+        </p>
+      <p class="body-text serif">New York City’s streets are narrow — and often inaccessible for pedestrians or bikers, particularly in less wealthy neighborhoods. When the pandemic rendered social distancing a necessity, former Mayor Bill de Blasio launched the Open Streets program as a promising solution: creating car-free zones to give pedestrians and cyclists more space. The program, first launched in Spring 2020, did add onto existing bike routes and became <a href="https://abc7ny.com/open-streets-boulevards-streets-restaurants-nyc-dining/10620018/">permanent</a> the following year in May 2021.
+        </p>
+    </div>
+
+    <div class="chart-section">
+        <div class="chart-row">
+          <div class="chart">
+
+
+
+
+            <!--- PASTE YOUR AI2HTML AFTER THIS LINE -->
+            
+
+<!-- Generated by ai2html v0.106.0 - 2022-03-05 22:56 -->
+<!-- ai file: map.ai -->
+<style media="screen,print">
+	#g-map-box ,
+	#g-map-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-map-box p {
+		margin:0;
+	}
+	#g-map-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-map-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-map-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-map-box .g-aiPointText p { white-space: nowrap; }
+	#g-map-medium {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-map-medium p {
+		font-family:Roboto;
+		font-weight:700;
+		line-height:34px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:28px;
+		text-align:left;
+		color:rgb(255,255,255);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-map-medium .g-pstyle0 {
+		height:34px;
+	}
+	#g-map-medium .g-pstyle1 {
+		font-weight:300;
+		line-height:17px;
+		height:17px;
+		font-size:14px;
+	}
+	#g-map-laptop {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-map-laptop p {
+		font-family:Roboto;
+		font-weight:700;
+		line-height:28px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:23px;
+		text-align:left;
+		color:rgb(255,255,255);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-map-laptop .g-pstyle0 {
+		height:28px;
+	}
+	#g-map-laptop .g-pstyle1 {
+		font-weight:300;
+		line-height:17px;
+		height:17px;
+		font-size:14px;
+	}
+	#g-map-mobile {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-map-mobile p {
+		font-family:Roboto;
+		font-weight:700;
+		line-height:22px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:18px;
+		text-align:left;
+		color:rgb(255,255,255);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-map-mobile .g-pstyle0 {
+		height:22px;
+	}
+	#g-map-mobile .g-pstyle1 {
+		font-weight:300;
+		line-height:17px;
+		height:17px;
+		font-size:14px;
+	}
+
+</style>
+
+<div id="g-map-box" class="ai2html">
+
+	<!-- Artboard: medium -->
+	<div id="g-map-medium" class="g-artboard" style="width:620px; height:639px;" data-aspect-ratio="0.97" data-min-width="620">
+<div style=""></div>
+		<img id="g-map-medium-img" class="g-aiImg" alt="" src="map-medium.jpg"/>
+		<div id="g-ai0-1" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:8.3522%;margin-top:-52.4px;left:0.5612%;width:355px;">
+			<p class="g-pstyle0">These Are New York City&rsquo;s </p>
+			<p class="g-pstyle0">Planned Open Streets &mdash; </p>
+			<p class="g-pstyle0">But Not All of Them Work</p>
+		</div>
+		<div id="g-ai0-2" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:19.7786%;margin-top:-9.4px;left:4.2309%;width:90px;">
+			<p class="g-pstyle1">Bike routes</p>
+		</div>
+		<div id="g-ai0-3" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:19.7786%;margin-top:-9.4px;left:19.628%;width:174px;">
+			<p class="g-pstyle1">Designated Open Streets</p>
+		</div>
+		<div id="g-ai0-4" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:98.9648%;margin-top:-9.4px;left:0.5075%;width:166px;">
+			<p class="g-pstyle1">Source: NYC Open Data</p>
+		</div>
+	</div>
+
+	<!-- Artboard: laptop -->
+	<div id="g-map-laptop" class="g-artboard" style="width:490px; height:499px;" data-aspect-ratio="0.982" data-min-width="490" data-max-width="619">
+<div style=""></div>
+		<img id="g-map-laptop-img" class="g-aiImg" alt="" src="map-laptop.jpg"/>
+		<div id="g-ai1-1" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:8.4278%;margin-top:-43.1px;left:0.5951%;width:296px;">
+			<p class="g-pstyle0">These Are New York City&rsquo;s </p>
+			<p class="g-pstyle0">Planned Open Streets &mdash; </p>
+			<p class="g-pstyle0">But Not All of Them Work</p>
+		</div>
+		<div id="g-ai1-2" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:19.7165%;margin-top:-9.4px;left:4.1839%;width:90px;">
+			<p class="g-pstyle1">Bike routes</p>
+		</div>
+		<div id="g-ai1-3" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:24.1253%;margin-top:-9.4px;left:4.2231%;width:174px;">
+			<p class="g-pstyle1">Designated Open Streets</p>
+		</div>
+		<div id="g-ai1-4" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:96.8708%;margin-top:-9.4px;left:0.6816%;width:166px;">
+			<p class="g-pstyle1">Source: NYC Open Data</p>
+		</div>
+	</div>
+
+	<!-- Artboard: mobile -->
+	<div id="g-map-mobile" class="g-artboard" style="max-width: 375px;max-height: 377px" data-aspect-ratio="0.995" data-min-width="0" data-max-width="489">
+<div style="padding: 0 0 100.48% 0;"></div>
+		<img id="g-map-mobile-img" class="g-aiImg" alt="" src="map-mobile.jpg"/>
+		<div id="g-ai2-1" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:9.4847%;margin-top:-33.7px;left:2.2797%;width:236px;">
+			<p class="g-pstyle0">These Are New York City&rsquo;s </p>
+			<p class="g-pstyle0">Planned Open Streets &mdash; </p>
+			<p class="g-pstyle0">But Not All of Them Work</p>
+		</div>
+		<div id="g-ai2-2" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:23.4568%;margin-top:-9.4px;left:6.362%;width:90px;">
+			<p class="g-pstyle1">Bike routes</p>
+		</div>
+		<div id="g-ai2-3" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:28.2339%;margin-top:-9.4px;left:6.3714%;width:174px;">
+			<p class="g-pstyle1">Designated Open Streets</p>
+		</div>
+		<div id="g-ai2-4" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:97.236%;margin-top:-9.4px;left:1.7987%;width:166px;">
+			<p class="g-pstyle1">Source: NYC Open Data</p>
+		</div>
+	</div>
+
+</div>
+
+<!-- End ai2html - 2022-03-05 22:56 -->
+
+
+
+
+
+
+
+        </div>
+        </div>
+    </div>
+
+    <div class="story-body">
+        <p class="body-text serif">But the program seemed to fall short of its promises. A report by transportation non-profit<a href="https://www.transalt.org/open-streets-forever-nyc#exec">Transportation Alternatives</a> found in October 2021 that only 46% of the city’s Open Streets — equating to 24 miles — were actually working in 2021. Only 20% New Yorkers lived within walking distance of an Open Street, the report found.
+            </p>
+
+        <p class="body-text serif">There were also disparities in which Open Streets were functioning: those in predominantly white neighborhoods were more likely to be active. There are only 20 Open Street locations in the Bronx, equating to 7 streets per million residents. In Manhattan, there are 214 Open Streets - or 68 streets per million residents, nearly 10 times more than the Bronx, according to an analysis of NYC Open Data's <a href="https://data.cityofnewyork.us/Health/Open-Streets-Locations/uiay-nctu">Open Streets locations</a> dataset.
+            </p>
+    </div>
+
+    <div class="chart-section">
+        <div class="chart-row">
+          <div class="chart">
+
+
+
+
+            <!--- PASTE YOUR AI2HTML AFTER THIS LINE -->
+
+<!-- Generated by ai2html v0.106.0 - 2022-03-05 20:13 -->
+<!-- ai file: pct-active.ai -->
+<style media="screen,print">
+	#g-pct-active-box ,
+	#g-pct-active-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-pct-active-box p {
+		margin:0;
+	}
+	#g-pct-active-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-pct-active-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-pct-active-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-pct-active-box .g-aiPointText p { white-space: nowrap; }
+	#g-pct-active-medium {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-pct-active-medium p {
+		font-family:Roboto;
+		font-weight:300;
+		line-height:17px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:14px;
+		text-align:left;
+		color:rgb(255,255,255);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-pct-active-medium .g-pstyle0 {
+		font-weight:700;
+		line-height:34px;
+		height:34px;
+		font-size:28px;
+	}
+	#g-pct-active-medium .g-pstyle1 {
+		height:17px;
+	}
+	#g-pct-active-medium .g-pstyle2 {
+		font-weight:700;
+		line-height:19px;
+		height:19px;
+		font-size:16px;
+		text-align:center;
+	}
+	#g-pct-active-medium .g-pstyle3 {
+		font-weight:700;
+		line-height:19px;
+		height:19px;
+		font-size:16px;
+		text-align:center;
+		color:rgb(0,0,0);
+	}
+	#g-pct-active-medium .g-pstyle4 {
+		height:17px;
+		text-align:center;
+	}
+	#g-pct-active-laptop {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-pct-active-laptop p {
+		font-family:Roboto;
+		font-weight:300;
+		line-height:17px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:14px;
+		text-align:left;
+		color:rgb(255,255,255);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-pct-active-laptop .g-pstyle0 {
+		font-weight:700;
+		line-height:27px;
+		height:27px;
+		font-size:22px;
+	}
+	#g-pct-active-laptop .g-pstyle1 {
+		height:17px;
+	}
+	#g-pct-active-laptop .g-pstyle2 {
+		font-weight:700;
+		line-height:19px;
+		height:19px;
+		font-size:16px;
+		text-align:center;
+	}
+	#g-pct-active-laptop .g-pstyle3 {
+		font-weight:700;
+		line-height:19px;
+		height:19px;
+		font-size:16px;
+		text-align:center;
+		color:rgb(0,0,0);
+	}
+	#g-pct-active-laptop .g-pstyle4 {
+		height:17px;
+		text-align:center;
+	}
+	#g-pct-active-mobile {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-pct-active-mobile p {
+		font-family:Roboto;
+		font-weight:300;
+		line-height:17px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:14px;
+		text-align:left;
+		color:rgb(255,255,255);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-pct-active-mobile .g-pstyle0 {
+		font-weight:700;
+		line-height:23px;
+		height:23px;
+		font-size:19px;
+	}
+	#g-pct-active-mobile .g-pstyle1 {
+		height:17px;
+	}
+	#g-pct-active-mobile .g-pstyle2 {
+		height:17px;
+		text-align:center;
+	}
+	#g-pct-active-mobile .g-pstyle3 {
+		font-weight:700;
+		line-height:14px;
+		height:14px;
+		font-size:12px;
+		text-align:center;
+	}
+	#g-pct-active-mobile .g-pstyle4 {
+		font-weight:700;
+		line-height:14px;
+		height:14px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(0,0,0);
+	}
+	#g-pct-active-mobile .g-pstyle5 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+	}
+
+</style>
+
+<div id="g-pct-active-box" class="ai2html">
+
+	<!-- Artboard: medium -->
+	<div id="g-pct-active-medium" class="g-artboard" style="width:620px; height:526px;" data-aspect-ratio="1.179" data-min-width="620">
+<div style=""></div>
+		<img id="g-pct-active-medium-img" class="g-aiImg" alt="" src="pct-active-medium.png"/>
+		<div id="g-ai0-1" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:3.1883%;margin-top:-18.8px;left:0.8628%;width:550px;">
+			<p class="g-pstyle0">The Open Street Program&rsquo;s Closed Streets</p>
+		</div>
+		<div id="g-ai0-2" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:8.4383%;margin-top:-9.4px;left:0.835%;width:505px;">
+			<p class="g-pstyle1">Percent of Open Streets without barriers to keep cars out of designated spaces</p>
+		</div>
+		<div id="g-ai0-3" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:15.0923%;margin-top:-9.4px;left:0.8695%;width:129px;">
+			<p class="g-pstyle1">100% operational</p>
+		</div>
+		<div id="g-ai0-4" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:40.3254%;margin-top:-20.1px;left:89.2506%;margin-left:-50px;width:100px;">
+			<p class="g-pstyle2">Manhattan</p>
+			<p class="g-pstyle3">66</p>
+		</div>
+		<div id="g-ai0-5" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:48.058%;margin-top:-17.8px;left:22.4269%;margin-left:-134px;width:268px;">
+			<p class="g-pstyle4">Less than one in five of the Bronx&rsquo;s </p>
+			<p class="g-pstyle4">designated Open Streets had barricades</p>
+		</div>
+		<div id="g-ai0-6" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:48.8806%;margin-top:-20.1px;left:69.5882%;margin-left:-58.5px;width:117px;">
+			<p class="g-pstyle2">Staten Island</p>
+			<p class="g-pstyle3">56</p>
+		</div>
+		<div id="g-ai0-7" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:61.4281%;margin-top:-20.1px;left:49.9711%;margin-left:-43px;width:86px;">
+			<p class="g-pstyle2">Brooklyn</p>
+			<p class="g-pstyle3">40</p>
+		</div>
+		<div id="g-ai0-8" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:69.0327%;margin-top:-20.1px;left:30.2923%;margin-left:-38px;width:76px;">
+			<p class="g-pstyle2">Queens</p>
+			<p class="g-pstyle3">31</p>
+		</div>
+		<div id="g-ai0-9" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:81.7703%;margin-top:-20.1px;left:10.6791%;margin-left:-32px;width:64px;">
+			<p class="g-pstyle2">Bronx</p>
+			<p class="g-pstyle3">16</p>
+		</div>
+		<div id="g-ai0-10" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:98.1721%;margin-top:-9.4px;left:0.9012%;width:366px;">
+			<p class="g-pstyle1">Source: October 2021 Transportation Alternatives report</p>
+		</div>
+	</div>
+
+	<!-- Artboard: laptop -->
+	<div id="g-pct-active-laptop" class="g-artboard" style="width:490px; height:426px;" data-aspect-ratio="1.15" data-min-width="490" data-max-width="619">
+<div style=""></div>
+		<img id="g-pct-active-laptop-img" class="g-aiImg" alt="" src="pct-active-laptop.png"/>
+		<div id="g-ai1-1" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:2.8384%;margin-top:-15.1px;left:0.4797%;width:444px;">
+			<p class="g-pstyle0">The Open Street Program&rsquo;s Closed Streets</p>
+		</div>
+		<div id="g-ai1-2" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:8.3064%;margin-top:-9.4px;left:0.4514%;width:505px;">
+			<p class="g-pstyle1">Percent of Open Streets without barriers to keep cars out of designated spaces</p>
+		</div>
+		<div id="g-ai1-3" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:16.5224%;margin-top:-9.4px;left:0.4857%;width:129px;">
+			<p class="g-pstyle1">100% operational</p>
+		</div>
+		<div id="g-ai1-4" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:40.8713%;margin-top:-20.1px;left:89.9956%;margin-left:-50px;width:100px;">
+			<p class="g-pstyle2">Manhattan</p>
+			<p class="g-pstyle3">66</p>
+		</div>
+		<div id="g-ai1-5" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:45.7242%;margin-top:-17.8px;left:27.4233%;margin-left:-134px;width:268px;">
+			<p class="g-pstyle4">Less than one in five of the Bronx&rsquo;s </p>
+			<p class="g-pstyle4">designated Open Streets had barricades</p>
+		</div>
+		<div id="g-ai1-6" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:49.322%;margin-top:-20.1px;left:70.0767%;margin-left:-58.5px;width:117px;">
+			<p class="g-pstyle2">Staten Island</p>
+			<p class="g-pstyle3">56</p>
+		</div>
+		<div id="g-ai1-7" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:61.9981%;margin-top:-20.1px;left:50.2152%;margin-left:-43px;width:86px;">
+			<p class="g-pstyle2">Brooklyn</p>
+			<p class="g-pstyle3">40</p>
+		</div>
+		<div id="g-ai1-8" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:69.2751%;margin-top:-20.1px;left:30.2758%;margin-left:-38px;width:76px;">
+			<p class="g-pstyle2">Queens</p>
+			<p class="g-pstyle3">31</p>
+		</div>
+		<div id="g-ai1-9" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:81.9511%;margin-top:-20.1px;left:10.4191%;margin-left:-32px;width:64px;">
+			<p class="g-pstyle2">Bronx</p>
+			<p class="g-pstyle3">16</p>
+		</div>
+		<div id="g-ai1-10" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:97.743%;margin-top:-9.4px;left:0.5584%;width:366px;">
+			<p class="g-pstyle1">Source: October 2021 Transportation Alternatives report</p>
+		</div>
+	</div>
+
+	<!-- Artboard: mobile -->
+	<div id="g-pct-active-mobile" class="g-artboard" style="max-width: 375px;max-height: 350px" data-aspect-ratio="1.072" data-min-width="0" data-max-width="489">
+<div style="padding: 0 0 93.28% 0;"></div>
+		<img id="g-pct-active-mobile-img" class="g-aiImg" alt="" src="pct-active-mobile.png"/>
+		<div id="g-ai2-1" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:3.3451%;margin-top:-12.7px;left:1.0732%;width:380px;">
+			<p class="g-pstyle0">The Open Street Program&rsquo;s Closed Streets</p>
+		</div>
+		<div id="g-ai2-2" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:11.6596%;margin-top:-17.8px;left:1.0456%;width:350px;">
+			<p class="g-pstyle1">Percent of Open Streets without barriers to keep cars </p>
+			<p class="g-pstyle1">out of designated spaces</p>
+		</div>
+		<div id="g-ai2-3" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:21.8368%;margin-top:-9.4px;left:1.0789%;width:129px;">
+			<p class="g-pstyle1">100% operational</p>
+		</div>
+		<div id="g-ai2-4" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:45.5074%;margin-top:-26.2px;left:23.6703%;margin-left:-98px;width:196px;">
+			<p class="g-pstyle2">Less than one in five of </p>
+			<p class="g-pstyle2">the Bronx&rsquo;s designated </p>
+			<p class="g-pstyle2">Open Streets had barricades</p>
+		</div>
+		<div id="g-ai2-5" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:44.2978%;margin-top:-15px;left:88.7%;margin-left:-40px;width:80px;">
+			<p class="g-pstyle3">Manhattan</p>
+			<p class="g-pstyle4">66</p>
+		</div>
+		<div id="g-ai2-6" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:52.0165%;margin-top:-15px;left:69.2214%;margin-left:-46.5px;width:93px;">
+			<p class="g-pstyle3">Staten Island</p>
+			<p class="g-pstyle4">56</p>
+		</div>
+		<div id="g-ai2-7" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:63.4516%;margin-top:-15px;left:49.7971%;margin-left:-35px;width:70px;">
+			<p class="g-pstyle3">Brooklyn</p>
+			<p class="g-pstyle4">40</p>
+		</div>
+		<div id="g-ai2-8" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:70.3126%;margin-top:-15px;left:30.3305%;margin-left:-31.5px;width:63px;">
+			<p class="g-pstyle3">Queens</p>
+			<p class="g-pstyle4">31</p>
+		</div>
+		<div id="g-ai2-9" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:81.7477%;margin-top:-15px;left:10.8781%;margin-left:-27px;width:54px;">
+			<p class="g-pstyle3">Bronx</p>
+			<p class="g-pstyle4">16</p>
+		</div>
+		<div id="g-ai2-10" class="g-ai2html-settings g-aiAbs g-aiPointText" style="top:96.2357%;margin-top:-6.6px;left:0.1508%;width:268px;">
+			<p class="g-pstyle5">Source: October 2021 Transportation Alternatives report</p>
+		</div>
+	</div>
+
+</div>
+
+<!-- End ai2html - 2022-03-05 20:13 -->
+            
+
+
+
+
+
+
+
+        </div>
+        </div>
+    </div>
+
+    <div class="story-body">
+        <p class="body-text serif">Even though the program might not have been successful so far, it is definitely still around and worth keeping an eye on. The Department of Transportation is currently accepting Open Streets <a href="https://www1.nyc.gov/html/dot/html/pr2021/dot-now-accepting-applications-for-2022-open-streets.shtml">applications</a> for 2022, so there may be new streets and hopefully, new improvements to the program soon.
+            </p>
+
+        <p class="body-text serif"><em>All code, data and shapefiles for this project are available on <a href="https://www.github.com/ilenapeng/nyc-open-streets">GitHub</a>.
+        </em>
+            </p>
+    </div>
+      
+  </body>
+</html>
