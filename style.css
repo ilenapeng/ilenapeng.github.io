@@ -42,17 +42,20 @@ p {
   font-weight:300;
   text-align:left;
 }
+
+.tool {color: gray}
+
 a {text-decoration: none;}
 em {font-family:'Lato', sans-serif; font-weight:300;}
 span {background-color: rgba(102,143,128,0.5);   font-family: 'Lato', sans-serif;
   font-weight:400}
 
-img {max-height: 150px;}
+img {max-width:100%}
 img.vertical{
   width:100%;
-  height:180px;
+  height:220px;
   object-fit: cover;
-  object-position: top;}
+  object-position: bottom;}
 
 article {
   padding-left: 12rem;
