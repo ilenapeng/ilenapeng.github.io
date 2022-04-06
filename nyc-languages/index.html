@@ -61,6 +61,9 @@
 
       .hidden { visibility: hidden; }
 
+	  .container{max-width:60%; margin:auto;}
+	  @media (max-width: 490px) {.container{max-width:98%}}
+
       /* When it's less than 700 pixels wide, do normal scrollytelling */
       @media only screen and (min-width: 700px) {
         #scrolly.side-by-side {
@@ -104,12 +107,14 @@
             #g-map-mobile {
                 display: block;
             }
+
         }
 
         @media (min-width: 490px) and (max-width: 620px) {
             #g-map-laptop {
                 display: block;
             }
+
         }
 
         @media (min-width: 620px)  {
@@ -126,7 +131,7 @@
   </head>
 
   <body>
-  <div style="max-width:80%; margin:auto;">
+  <div class="container">
   <h1><span style="color:#c9c9c9">ન્યુ યોર્ક Nueva York 纽约 </span><span style="color:#3E8571">New York</span><span style="color:#c9c9c9"> نیویارک Nowy Jork</span></h1>
   <h2>A brief dive into how language populations in New York City have shifted since 2005</h2>
 
@@ -1522,8 +1527,7 @@
           </div>
         </div>
 
-        
-        <div class="scrolly-overlay" style="padding-left:8%">
+        <div class="scrolly-overlay" style="padding-left:10%">
           <div class="step" id="step-zero">
             <p>New York's population has increased in every borough since at least 2005. 
                But the population that speaks a language other than English at home has dropped only in Brooklyn, according to data from the U.S. Census Bureau's American Community Survey.
@@ -1544,7 +1548,7 @@
         </div>
       </section>
 
-      <div style="max-width:60%; margin:auto; padding-bottom: 3px">
+      <div class="container">
 		<p>There are many factors that could be at play here. Language shifts can reflect demographic changes, as people of a race or ethnicity move in or out of an area. They are also considered by some as a proxy for measuring <a href="https://www.pewresearch.org/hispanic/2004/03/19/assimilation-and-language/">acculturation and assimilation</a>, as groups adopt the majority language of the country they have immigrated to. 
 			Most commonly, languages are spoken less when later generations speak their native tongues less proficiently and instead communicate in a more dominant language, like English.
 		</p>
