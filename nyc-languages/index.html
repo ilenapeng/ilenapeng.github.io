@@ -69,18 +69,28 @@
 	  a {color:#3E8571}
 	  img{max-width:80%; padding-top: 3em; margin: auto;}
 
-      .hidden { visibility: hidden; }
+    .hidden { visibility: hidden; }
+
+    /* styles for my images */
+		.child {
+      position: absolute;
+      top: 0;
+      display: flex;
+          align-items: center;
+          justify-content: center;
+      }
 
 	  .container{max-width:60%; margin:auto;}
-	  @media (max-width: 600px) {.container{max-width:98%}}
+	  @media (max-width: 800px) {.container{max-width:95%}}
 
-      /* When it's less than 700 pixels wide, do normal scrollytelling */
-      @media only screen and (min-width: 700px) {
+      /* When it's less than 800 pixels wide, do normal scrollytelling */
+      @media only screen and (min-width: 800px) {
+
         #scrolly.side-by-side {
           display: flex;
-		  max-width:80%;
-		  margin: auto;
-        }
+          max-width:80%;
+          margin: auto;
+          }
 
         #scrolly.side-by-side > div {
           flex-basis: 0;
@@ -101,12 +111,6 @@
           order: 1;
           flex-grow: 2;
         }
-
-		/* styles for my images */
-		.child {
-		position: absolute;
-		top: 0;
-		}
 
 
       }
