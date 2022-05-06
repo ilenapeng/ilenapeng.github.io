@@ -1,123 +1,1054 @@
 <!DOCTYPE html>
+
+<!-- Template from Soma: https://github.com/jsoma/ai2html-walkthroughs/blob/main/layers-scrollytelling/scrollytelling-incomplete/template.html -->
 <html>
-<head>
-  <title>The Path to Principal</title>
-  <link rel="shortcut icon" href="favicon.ico?" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="favicon.ico?" type="image/x-icon" />
+	<title>The Path to Principal</title>
+	<base target="_blank">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="The Path to Principal">
+	<meta property="og:description" content="The career paths of principal dancers at New York City Ballet and American Ballet Theatre">
+	<meta property="og:type" content="article">
+	<meta property="og:image" content="https://raw.githubusercontent.com/ilenapeng/path-to-principal/main/nycb-plot.png">
+	<meta name="twitter:card" content="summary_image">
+	<meta name="twitter:creator" content="@ilenapeng">
 
-  <base target="_blank">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+      
+      body{font-family: 'Libre Baskerville', serif;}
 
-  <meta property="og:title" content="The Path to Principal">
-  <meta property="og:description" content="How New York's principal dancers got to where they are">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="https://raw.githubusercontent.com/ilenapeng/path-to-principal/main/nycb-plot.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:creator" content="@ilenapeng">
-</head>
+      /* scrolly styling */
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
-    .image{text-align: center;}
-    img{max-width:100%;}
-    h2, h3, h6{font-family: Bakerville; font-weight:700; color:#FF6146}
-    ol{font-family: Lato; font-weight:400;}
-    ul{font-family: Lato; font-weight:400;}
-    p{font-family: Lato; font-weight:400;}
-    p{margin-top:3px;}
-    p a{color:#CB48B7}
-    p a:hover{color:#CB48B7}
-    p a:visited{color:#CB48B7}
-    .header-image{
-        background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/24/Lincoln_Center_Overview_%2848047495362%29.jpg');
-        background-repeat: no-repeat;
-        background-size: 100%;
-        background-position: center;
-        background-size: cover;}
+      #scrolly {
+        position: relative;
+        /* padding: 1rem; */
+      }
+
+      .scrolly-overlay {
+        position: relative;
+        padding: 0;
+        max-width: 35rem;
+        margin: 0 auto;
+      }
+
+      .sticky-thing {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 0;
+        top: 0;
+        height: 100vh;
+        /* Center everything inside */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .step {
+        margin: 0 auto 2rem auto;
+        margin-bottom: 25rem;
+        background-color: #eee;
+        background-color: #fff;
+        color: black;
+      }
+
+      .step p {
+        text-align: left;
+        padding: 1rem;
+        font-size: 1rem;
+      }
+
+	  h1 {font-size: 1.5rem; color:#CB48B7}
+	  h2 {font-size: 1.25rem;}
+	  p {font-size: 1rem;}
+	  a {color:#CB48B7}
+
+      .hidden { visibility: hidden; }
+
+	  .container{max-width:60%; margin:auto;}
+	  @media (max-width: 700px) {.container{max-width:98%}}
+
+      /* When it's less than 700 pixels wide, do normal scrollytelling */
+      @media only screen and (min-width: 700px) {
+        #scrolly.side-by-side {
+          display: flex;
+        }
+
+        #scrolly.side-by-side > div {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+		  padding-right: 0.75em;
+          /* was originally: padding: 0.75em; */
+        }
+
+        #scrolly.side-by-side .scrolly-overlay {
+          margin-top: 70vh;
+          order: 0;
+          /* Change these to adjust sizing options */
+          min-width: 15rem;
+          max-width: 20rem;
+        }
+
+        #scrolly.side-by-side .sticky-thing {
+          order: 1;
+          flex-grow: 2;
+        }
+
+        /* ai2html */
+        /* These are the styles for ai2html -- nycb */
+        
+        #g-nycb-laptop, #g-nycb-medium, #g-nycb-mobile {
+            display: none;
+        }
+
+        @media (max-width: 490px) {
+            h1.headline {
+                font-size: 2em;
+            }
+            h2.subhead {
+                font-size: 1.2em;
+            }
+            #g-nycb-mobile {
+                display: block;
+            }
+
+        }
+
+        @media (min-width: 490px) and (max-width: 620px) {
+            #g-nycb-laptop {
+                display: block;
+            }
+
+        }
+
+        @media (min-width: 620px)  {
+            #g-nycb-medium {
+                display: block;
+            }
+        }
+      }
+
+        /* These are the styles for ai2html -- abt */
+        
+        #g-abt-laptop, #g-abt-medium, #g-abt-mobile {
+            display: none;
+        }
+
+        @media (max-width: 490px) {
+            h1.headline {
+                font-size: 2em;
+            }
+            h2.subhead {
+                font-size: 1.2em;
+            }
+            #g-abt-mobile {
+                display: block;
+            }
+
+        }
+
+        @media (min-width: 490px) and (max-width: 620px) {
+            #g-abt-laptop {
+                display: block;
+            }
+
+        }
+
+        @media (min-width: 620px)  {
+            #g-abt-medium {
+                display: block;
+            }
+        }
+    </style>
+	<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+	
+  </head>
+
+  <body>
+  <div class="container">
+  <h1>The Path to Principal</h1>
+  <h2>The career paths of principal dancers at New York City Ballet and American Ballet Theatre</h2>
+  <p><em>By Ilena Peng</em></p>
+
+	<p>Ballet is not exactly an industry where unconventional career paths are common. Dancers typically start training young — even 13 is considered a late start — and follow a path that looks somewhat like this:
+	</p>
+
+	<ol type="1">
+	<li>Small school: Dancers often start out at their local dance studios and will eventually seek out more opportunities through  ballet competitions or at summer programs hosted by more prestigious schools
+	</li>
+	<li>Larger, more prestigious school: Sometimes competitions or summer programs will translate to an offer of full-time study at a larger school, which might be directly affiliated with a company 
+	</li>
+	<li>A trainee, second company or apprentice position: Students graduating from a school affiliated with a company might be invited to join one of these programs. Other students might audition or be recruited from competitions. In these positions, dancers are in their final phase of school but begin working in more of a professional capacity (Think “internship,” but for ballet)
+	</li>
+	<li>Corps de ballet member: Dancers are officially part of a professional company and are part of the main ensemble in ballets, though many will also have the opportunity to perform higher-ranked roles
+	</li>
+	<li>Soloist: Soloists will often dance both corps de ballet roles and soloist or principal roles, as the “in-between” position
+	</li>
+	<li>Principal: Those in the highly coveted and respected rank of principal almost always perform lead roles — the absolute dream for many dancers
+	</li>
+	</ol>
+
+	<p>But different companies still have varied processes. These are the paths that current principal dancers at American Ballet Theatre and New York City Ballet took to arrive at their current position. Both companies are located in New York City and in fact, both share the same home theatre at Lincoln Center. But their dancers have taken somewhat different paths to get there. 
+    </p>
+
+  <!-- </div> -->
+
+  <!-- this is my first scrolly -->
+<section id="scrolly" class="side-by-side">
+	<!-- style="max-width:80%; margin:auto;" -->
+<div class="sticky-thing">
+	<div class="ai2html-container">
+
+
+
+
+
+<!-- Generated by ai2html v0.106.0 - 2022-05-04 21:05 -->
+<!-- ai file: nycb.ai -->
+<style media="screen,print">
+	#g-nycb-box ,
+	#g-nycb-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-nycb-box p {
+		margin:0;
+	}
+	#g-nycb-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-nycb-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-nycb-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-nycb-box .g-aiPointText p { white-space: nowrap; }
+	#g-nycb-medium {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-nycb-medium p {
+		font-family:Baskerville;
+		font-weight:400;
+		line-height:19px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:16px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-nycb-medium .g-pstyle0 {
+		height:19px;
+		text-align:justify;
+	}
+	#g-nycb-medium .g-pstyle1 {
+		text-align:justify;
+	}
+	#g-nycb-medium .g-pstyle2 {
+		height:19px;
+		text-align:right;
+	}
+	#g-nycb-medium .g-pstyle3 {
+		line-height:22px;
+		height:22px;
+		text-align:center;
+	}
+	#g-nycb-laptop {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-nycb-laptop p {
+		font-family:Baskerville;
+		font-weight:400;
+		line-height:17px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:14px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-nycb-laptop .g-pstyle0 {
+		height:17px;
+		text-align:justify;
+	}
+	#g-nycb-laptop .g-pstyle1 {
+		text-align:justify;
+	}
+	#g-nycb-laptop .g-pstyle2 {
+		height:17px;
+		text-align:right;
+	}
+	#g-nycb-laptop .g-pstyle3 {
+		height:17px;
+		text-align:center;
+	}
+	#g-nycb-mobile {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-nycb-mobile p {
+		font-family:Baskerville;
+		font-weight:400;
+		line-height:13px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:16px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-nycb-mobile .g-pstyle0 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:justify;
+	}
+	#g-nycb-mobile .g-pstyle1 {
+		line-height:17px;
+		font-size:14px;
+		text-align:justify;
+	}
+	#g-nycb-mobile .g-pstyle2 {
+		line-height:19px;
+		height:19px;
+		text-align:justify;
+	}
+	#g-nycb-mobile .g-pstyle3 {
+		height:13px;
+		text-align:justify;
+	}
+
 </style>
 
-<body>
-    <div class="header-image" style="max-width:100%; height:300px">
-    </div>
+<div id="g-nycb-box" class="ai2html">
 
-    <div class="container pt-5" style="max-width:65%">
-    <h2 style="padding-bottom:8px;">The Path to Principal</h2>
-    <p><b>By Ilena Peng</b></p>
+	<!-- Artboard: medium -->
+	<div id="g-nycb-medium" class="g-artboard" style="width:620px; height:417px;" data-aspect-ratio="1.487" data-min-width="620">
+<div style=""></div>
+		<img id="g-nycb-medium-img" class="g-aiImg" alt="" src="nycb-medium.png"/>
+<!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-aiImg" version="1.2" baseProfile="tiny" id="g-nycb-medium-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 620 417" xml:space="preserve">
+<g>
+	<g id="step1" data-name="step1">
+		<g id="step1-2" data-name="step1">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M337.449,156.648c0,0,28.542,50.879,64.979,85.003"/>
+			<g>
+				<polygon points="399.338,243.466 406.138,245.042 404.104,238.365 				"/>
+			</g>
+		</g>
+	</g>
+	<g id="step2" data-name="step2">
+		<g id="step2-2" data-name="step2">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M521.49,226.497c9.034,11.627,34.038,47.88,30.771,89.271"/>
+			<g>
+				<polygon points="519.355,229.508 518.318,222.606 524.814,225.158 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+<style>
+#g-nycb-medium-interactions-img rect, #g-nycb-medium-interactions-img circle, #g-nycb-medium-interactions-img path, #g-nycb-medium-interactions-img line, #g-nycb-medium-interactions-img polyline, #g-nycb-medium-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
 
-    <p>Ballet is not exactly an industry where unconventional career paths are common. Dancers typically start training young — even 13 is considered a late start — and follow a path that looks somewhat like this:
-    </p>
+		<div id="g-ai0-1" class="g-base g-aiAbs g-aiPointText" style="top:3.3405%;margin-top:-10.9px;left:1.1449%;width:528px;">
+			<p class="g-pstyle0">Ages at which New York City Ballet&rsquo;s principal dancers reached each milestone</p>
+		</div>
+		<div id="g-ai0-2" class="g-base g-aiAbs" style="top:6.9544%;left:53.5038%;width:3.2258%;">
+			<p class="g-pstyle1">10</p>
+		</div>
+		<div id="g-ai0-3" class="g-base g-aiAbs" style="top:6.9544%;left:76.1351%;width:3.2258%;">
+			<p class="g-pstyle1">20</p>
+		</div>
+		<div id="g-ai0-4" class="g-base g-aiAbs g-aiPointText" style="top:16.7697%;margin-top:-10.9px;right:67.5608%;width:146px;">
+			<p class="g-pstyle2">Became a principal</p>
+		</div>
+		<div id="g-ai0-5" class="g-step1-text g-aiAbs g-aiPointText" style="top:28.227%;margin-top:-34.7px;left:52.2274%;margin-left:-101px;width:202px;">
+			<p class="g-pstyle3">All but one principal dancer</p>
+			<p class="g-pstyle3">attended the School of</p>
+			<p class="g-pstyle3">American Ballet full-time</p>
+		</div>
+		<div id="g-ai0-6" class="g-base g-aiAbs g-aiPointText" style="top:23.964%;margin-top:-10.9px;right:67.5595%;width:128px;">
+			<p class="g-pstyle2">Became a soloist</p>
+		</div>
+		<div id="g-ai0-7" class="g-base g-aiAbs g-aiPointText" style="top:31.1582%;margin-top:-10.9px;right:67.5721%;width:187px;">
+			<p class="g-pstyle2">Joined the corps de ballet</p>
+		</div>
+		<div id="g-ai0-8" class="g-base g-aiAbs g-aiPointText" style="top:38.5923%;margin-top:-10.9px;right:67.5884%;width:165px;">
+			<p class="g-pstyle2">Became an apprentice</p>
+		</div>
+		<div id="g-ai0-9" class="g-base g-aiAbs g-aiPointText" style="top:45.7865%;margin-top:-10.9px;right:67.5936%;width:213px;">
+			<p class="g-pstyle2">Principal at another company</p>
+		</div>
+		<div id="g-ai0-10" class="g-base g-aiAbs g-aiPointText" style="top:52.9807%;margin-top:-10.9px;right:67.5885%;width:198px;">
+			<p class="g-pstyle2">Joined a different company</p>
+		</div>
+		<div id="g-ai0-11" class="g-base g-aiAbs g-aiPointText" style="top:60.175%;margin-top:-10.9px;right:67.6301%;width:187px;">
+			<p class="g-pstyle2">Studied at NYCB's school</p>
+		</div>
+		<div id="g-ai0-12" class="g-base g-aiAbs g-aiPointText" style="top:67.609%;margin-top:-10.9px;right:67.669%;width:215px;">
+			<p class="g-pstyle2">Studied at a prestigious school</p>
+		</div>
+		<div id="g-ai0-13" class="g-base g-aiAbs g-aiPointText" style="top:74.8033%;margin-top:-10.9px;right:67.6533%;width:123px;">
+			<p class="g-pstyle2">Started training</p>
+		</div>
+		<div id="g-ai0-14" class="g-step2-text g-aiAbs g-aiPointText" style="top:88.452%;margin-top:-45.8px;left:83.2856%;margin-left:-95.5px;width:191px;">
+			<p class="g-pstyle3">Gonzalo Garcia trained at</p>
+			<p class="g-pstyle3">the San Francisco Ballet</p>
+			<p class="g-pstyle3">School and eventually</p>
+			<p class="g-pstyle3">became a principal there </p>
+		</div>
+	</div>
 
-    <ol type="1">
-    <li>Small school: Dancers often start out at their local dance studios and will eventually seek out more opportunities through  ballet competitions or at summer programs hosted by more prestigious schools
-    </li>
-    <li>Larger, more prestigious school: Sometimes competitions or summer programs will translate to an offer of full-time study at a larger school, which might be directly affiliated with a company 
-    </li>
-    <li>A trainee, second company or apprentice position: Students graduating from a school affiliated with a company might be invited to join one of these programs. Other students might audition or be recruited from competitions. In these positions, dancers are in their final phase of school but begin working in more of a professional capacity (Think “internship,” but for ballet)
-    </li>
-    <li>Corps de ballet member: Dancers are officially part of a professional company and are part of the main ensemble in ballets, though many will also have the opportunity to perform higher-ranked roles
-    </li>
-    <li>Soloist: Soloists will often dance both corps de ballet roles and soloist or principal roles, as the “in-between” position
-    </li>
-    <li>Principal: Those in the highly coveted and respected rank of principal almost always perform lead roles — the absolute dream for many dancers
-    </li>
-    </ol>
+	<!-- Artboard: laptop -->
+	<div id="g-nycb-laptop" class="g-artboard" style="width:490px; height:326px;" data-aspect-ratio="1.503" data-min-width="490" data-max-width="619">
+<div style=""></div>
+		<img id="g-nycb-laptop-img" class="g-aiImg" alt="" src="nycb-laptop.png"/>
+<!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-aiImg" version="1.2" baseProfile="tiny" id="g-nycb-laptop-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 490 326" xml:space="preserve">
+<g>
+	<g id="step1-3" data-name="step1">
+		<g id="step1-4" data-name="step1">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M275,127c0,0,21.056,37.535,48.104,63.256"/>
+			<g>
+				<polygon points="320.002,192.086 326.802,193.662 324.768,186.985 				"/>
+			</g>
+		</g>
+	</g>
+	<g id="step2-3" data-name="step2">
+		<g id="step2-4" data-name="step2">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M414.546,180.656C421.89,190.347,439.379,216.868,437,247"/>
+			<g>
+				<polygon points="412.407,183.649 411.402,176.742 417.887,179.325 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+<style>
+#g-nycb-laptop-interactions-img rect, #g-nycb-laptop-interactions-img circle, #g-nycb-laptop-interactions-img path, #g-nycb-laptop-interactions-img line, #g-nycb-laptop-interactions-img polyline, #g-nycb-laptop-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
 
-    <p>But different companies still have varied processes. These are the paths that current principal dancers at American Ballet Theatre and New York City Ballet took to arrive at their current position. Both companies are located in New York City and in fact, both share the same home theatre at Lincoln Center. But their dancers have taken somewhat different paths to get there. 
-    </p>
-    </div>
+		<div id="g-ai1-1" class="g-base g-aiAbs g-aiPointText" style="top:4.5248%;margin-top:-9.8px;left:1.3817%;width:465px;">
+			<p class="g-pstyle0">Ages at which New York City Ballet&rsquo;s principal dancers reached each milestone</p>
+		</div>
+		<div id="g-ai1-2" class="g-base g-aiAbs" style="top:9.2025%;left:55.2413%;width:3.0612%;">
+			<p class="g-pstyle1">10</p>
+		</div>
+		<div id="g-ai1-3" class="g-base g-aiAbs" style="top:9.5092%;left:76.8367%;width:3.0612%;">
+			<p class="g-pstyle1">20</p>
+		</div>
+		<div id="g-ai1-4" class="g-base g-aiAbs g-aiPointText" style="top:18.6353%;margin-top:-9.8px;right:64.9534%;width:130px;">
+			<p class="g-pstyle2">Became a principal</p>
+		</div>
+		<div id="g-ai1-5" class="g-step1-text g-aiAbs g-aiPointText" style="top:29.9236%;margin-top:-26.6px;left:54.0717%;margin-left:-90px;width:180px;">
+			<p class="g-pstyle3">All but one principal dancer</p>
+			<p class="g-pstyle3">attended the School of</p>
+			<p class="g-pstyle3">American Ballet full-time</p>
+		</div>
+		<div id="g-ai1-6" class="g-base g-aiAbs g-aiPointText" style="top:25.6905%;margin-top:-9.8px;right:65.003%;width:114px;">
+			<p class="g-pstyle2">Became a soloist</p>
+		</div>
+		<div id="g-ai1-7" class="g-base g-aiAbs g-aiPointText" style="top:32.7457%;margin-top:-9.8px;right:64.9404%;width:166px;">
+			<p class="g-pstyle2">Joined the corps de ballet</p>
+		</div>
+		<div id="g-ai1-8" class="g-base g-aiAbs g-aiPointText" style="top:39.8009%;margin-top:-9.8px;right:64.9073%;width:147px;">
+			<p class="g-pstyle2">Became an apprentice</p>
+		</div>
+		<div id="g-ai1-9" class="g-base g-aiAbs g-aiPointText" style="top:46.8561%;margin-top:-9.8px;right:64.9131%;width:189px;">
+			<p class="g-pstyle2">Principal at another company</p>
+		</div>
+		<div id="g-ai1-10" class="g-base g-aiAbs g-aiPointText" style="top:53.6046%;margin-top:-9.8px;right:64.882%;width:176px;">
+			<p class="g-pstyle2">Joined a different company</p>
+		</div>
+		<div id="g-ai1-11" class="g-base g-aiAbs g-aiPointText" style="top:60.6598%;margin-top:-9.8px;right:65.0046%;width:166px;">
+			<p class="g-pstyle2">Studied at NYCB's school</p>
+		</div>
+		<div id="g-ai1-12" class="g-base g-aiAbs g-aiPointText" style="top:67.715%;margin-top:-9.8px;right:64.9456%;width:191px;">
+			<p class="g-pstyle2">Studied at a prestigious school</p>
+		</div>
+		<div id="g-ai1-13" class="g-base g-aiAbs g-aiPointText" style="top:74.7702%;margin-top:-9.8px;right:64.8238%;width:111px;">
+			<p class="g-pstyle2">Started training</p>
+		</div>
+		<div id="g-ai1-14" class="g-step2-text g-aiAbs g-aiPointText" style="top:87.7151%;margin-top:-35px;left:83.5762%;margin-left:-84.5px;width:169px;">
+			<p class="g-pstyle3">Gonzalo Garcia trained at</p>
+			<p class="g-pstyle3">the San Francisco Ballet</p>
+			<p class="g-pstyle3">School and eventually</p>
+			<p class="g-pstyle3">became a principal there </p>
+		</div>
+	</div>
 
-<!-- END CONTAINER FOR HEAD. START NEW CONTAINER FOR MID-SECTION -->
+	<!-- Artboard: mobile -->
+	<div id="g-nycb-mobile" class="g-artboard" style="max-width: 375px;max-height: 481px" data-aspect-ratio="0.78" data-min-width="0" data-max-width="489">
+<div style="padding: 0 0 128.2133% 0;"></div>
+		<img id="g-nycb-mobile-img" class="g-aiImg" alt="" src="nycb-mobile.png"/>
+		<div id="g-ai2-1" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:5.0766%;margin-top:-23.4px;left:1.3286%;width:363px;">
+			<p class="g-pstyle0">Ages at which today's NYCB principal dancers </p>
+			<p class="g-pstyle0">reached each milestone</p>
+		</div>
+		<div id="g-ai2-2" class="g-base g-aiAbs" style="top:10.6073%;left:30.939%;width:4%;">
+			<p class="g-pstyle1">10</p>
+		</div>
+		<div id="g-ai2-3" class="g-base g-aiAbs" style="top:10.8153%;left:65.0237%;width:4%;">
+			<p class="g-pstyle1">20</p>
+		</div>
+		<div id="g-ai2-4" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:19.1202%;margin-top:-10.9px;left:3.8333%;width:146px;">
+			<p class="g-pstyle2">Became a principal</p>
+		</div>
+		<div id="g-ai2-5" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:28.0636%;margin-top:-10.9px;left:3.7016%;width:128px;">
+			<p class="g-pstyle2">Became a soloist</p>
+		</div>
+		<div id="g-ai2-6" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:37.007%;margin-top:-10.9px;left:3.1818%;width:187px;">
+			<p class="g-pstyle2">Joined the corps de ballet</p>
+		</div>
+		<div id="g-ai2-7" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:46.3664%;margin-top:-10.9px;left:3.7323%;width:165px;">
+			<p class="g-pstyle2">Became an apprentice</p>
+		</div>
+		<div id="g-ai2-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.0777%;margin-top:-14.4px;left:3.8245%;width:150px;">
+			<p class="g-pstyle3">Principal at another</p>
+			<p class="g-pstyle3">company</p>
+		</div>
+		<div id="g-ai2-9" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:66.4371%;margin-top:-14.4px;left:3.0948%;width:135px;">
+			<p class="g-pstyle3">Joined a different</p>
+			<p class="g-pstyle3">company</p>
+		</div>
+		<div id="g-ai2-10" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:75.5885%;margin-top:-14.4px;left:3.8141%;width:147px;">
+			<p class="g-pstyle3">Studied at NYCB's </p>
+			<p class="g-pstyle3">school</p>
+		</div>
+		<div id="g-ai2-11" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:84.532%;margin-top:-14.4px;left:3.7656%;width:135px;">
+			<p class="g-pstyle3">Studied at a </p>
+			<p class="g-pstyle3">prestigious school</p>
+		</div>
+		<div id="g-ai2-12" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:91.7075%;margin-top:-10.9px;left:3.7813%;width:123px;">
+			<p class="g-pstyle2">Started training</p>
+		</div>
+	</div>
 
-<div class="container pt-5" style="max-width:95%">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="image">
-          <img src="https://raw.githubusercontent.com/ilenapeng/path-to-principal/main/nycb-plot.png" alt="Chart of the training and professional journeys of New York City Ballet principal dancers. Most dancers first joined the ballet company through the New York City Ballet's school, the School of American Ballet.">
-          </div>
-      </div>
+<!-- Custom HTML -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+<style> .hidden{visibility:hidden;} </style>
 
-      <div class="col-md-4">
-        <p>Almost all of NYCB’s dancers join the company through its School of American Ballet. This is largely because NYCB performs using the Balanchine technique, created by the company’s co-founder George Balanchine. Trademarks of the Balanchine technique include a specific <a href="https://www.youtube.com/watch?v=dyzcmwihsnI">hand position</a> and always looking to the front of the stage when doing turns, whereas classical ballet technique will always look at where the dancer is trying to go. 
-        </p>
-    
-        <p>As a result, NYCB’s dancers are overwhelmingly American. Only Gonzalo Garcia, from Spain, began his training oversees. (Recently promoted principal Indiana Woodward was born in France, but began her dance training in California). NYCB’s current principals were also all promoted to the highest rank within their 20s, with most in their early or mid-20s.
-        </p>    
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-8">
-        <div class="image">
-          <img src="https://raw.githubusercontent.com/ilenapeng/path-to-principal/main/abt-plot.png" alt="Chart of the training and professional journeys of New York City Ballet principal dancers. Most dancers first joined the ballet company through the New York City Ballet's school, the School of American Ballet.">
-          </div>
-      </div>
-
-      <div class="col-md-4">
-        <p>On the other hand, most of ABT’s principal dancers never attended ABT’s Jacqueline Kennedy Onassis School. Instead, they joined ABT through the studio company in their late teenage years. These dancers are sometimes recruited from major competitions, as was the case for principal dancer Joo Won Ahn, who received an invitation to join the studio company after winning the gold medal at Youth America Grand Prix’s New York Finals.
-        </p>
-    
-        <p>Because of this different timeline, ABT contains more international talent than NYCB. Ahn and Hee Seo are from South Korea. Thomas Forster was born in England and completed his training at the esteemed Royal Ballet School before joining ABT. Herman Cornejo was a principal dancer in his native Argentina before joining ABT as a corps de ballet member. Christine Shevchenko began training in Ukraine before moving to train at The Rock School for Dance Education in Philadelphia.
-        </p>
-    
-        <p>"The name ABT represents America, which is a melting pot,"" Seo said in a <a href="https://youtu.be/D6p50EuiTHs">2014 ABT video</a>. "We have dancers from all over the world, from different training, looking different — but we have the energy that brings different trainings, different people together."
-        </p>
-      </div>
-    </div>
 </div>
 
-<!-- START NEW CONTAINER -->
-    <div class="container pt-5" style="max-width:65%">
-    <p>The age range at which ABT principals were promoted was also wider. The youngest age at which dancers became principals were similar at both companies — 20 at NYCB and 21 at ABT. But the oldest dancer to be promoted at NYCB was 28, compared to 34 at ABT.
-    </p>  
+<!-- End ai2html - 2022-05-04 21:05 -->
 
-    <p>The exceptions to both of these patterns of joining the company through either the school, the studio company or the lower levels of the company are ABT’s James Whiteside and NYCB’s Gonzalo Garcia. Whiteside joined Boston Ballet II — Boston Ballet’s second company — and then eventually rose through the ranks of the company to become a principal. He later joined NYCB as a soloist and was promoted to principal a year later. Gonzalo Garcia was a student at San Francisco Ballet School before joining the company and becoming a principal. He crossed paths with NYCB when he was invited to perform with the company in 2004 and joined as a principal three years later.
+
+</div>
+</div>
+
+<div class="scrolly-overlay">
+	<div class="step" id="step-zero">
+		<p>Almost all of NYCB’s dancers join the company through its School of American Ballet. This is largely because NYCB performs using the Balanchine technique, a very specific way of movement created by the company’s co-founder George Balanchine.
+		</p>
+	
+		<p>As a result, NYCB’s dancers are overwhelmingly American.</p>
+	</div>
+	<div class="step" id="step-one">
+		<p>Only Gonzalo Garcia, from Spain, began his training oversees. Garcia was later a student at San Francisco Ballet School before joining the company and becoming a principal. He crossed paths with NYCB when he was invited to perform with the company in 2004 and joined as a principal three years later.
+		</p>
+
+		<p>(Recently promoted principal Indiana Woodward was born in France, but began her dance training in California).
+		</p> 
+	</div>
+	<!-- <div class="step" id="step-two">
+		<p>NYCB’s current principals were also all promoted to the highest rank within their 20s, with most in their early or mid-20s.
+		</p>
+	</div> -->
+  </div>
+  </section>
+  </div>
+
+  <div class="container">
+	<p>Most of ABT’s principal dancers never attended ABT’s Jacqueline Kennedy Onassis School, but instead first interacted with ABT through the studio company in their late teenage years. The studio company is meant to bridge the gap between student and professional, and dancers have the opportunity to continue training while also performing in productions alongside the company. 
+	</p>
+
+	<p>
+	These dancers are sometimes recruited from major competitions, as was the case for principal dancer Joo Won Ahn, who received an invitation to join the studio company after winning the gold medal at Youth America Grand Prix’s New York Finals.
     </p>
 
-    <p>The journey to become a principal dancer is a long and winding one, as pictured here. In other companies, these paths become too complicated to even visualize, as dancers jump between several schools and companies to reach the ultimate goal of being a principal dancer. Even though ballet’s physical demands means that most follow a similar training journey, it is refreshing to see the actual paths of these dancers and delight in their nuances.
+    <p>Because of this, ABT has more international diversity than NYCB. Ahn and Hee Seo are from South Korea. Thomas Forster was born in England and completed his training at the esteemed Royal Ballet School before joining ABT. Herman Cornejo was a principal dancer in his native Argentina before joining ABT as a corps de ballet member. Christine Shevchenko began training in Ukraine before moving to train at The Rock School for Dance Education in Philadelphia.
+    </p>
+
+    <p>"The name ABT represents America, which is a melting pot,"" Seo said in a <a href="https://youtu.be/D6p50EuiTHs">2014 ABT video</a>. "We have dancers from all over the world, from different training, looking different — but we have the energy that brings different trainings, different people together."
+    </p>
+
+    <p>The age range at which ABT principals were promoted was also wider. The youngest age at which dancers became principals were similar at both companies — 20 at NYCB and 21 at ABT. But the oldest dancer to be promoted at NYCB was 28, compared to 34 at ABT.
+    </p>
+</div>
+
+<div class="container">
+
+  <section id="scrolly" class="side-by-side">
+	<!-- style="max-width:80%; margin:auto;" -->
+<div class="sticky-thing">
+	<div class="ai2html-container">
+
+
+
+<!-- Generated by ai2html v0.106.0 - 2022-05-04 22:31 -->
+<!-- ai file: abt.ai -->
+<style media="screen,print">
+	#g-abt-box ,
+	#g-abt-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-abt-box p {
+		margin:0;
+	}
+	#g-abt-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-abt-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-abt-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-abt-box .g-aiPointText p { white-space: nowrap; }
+	#g-abt-medium {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-abt-medium p {
+		font-family:Baskerville;
+		font-weight:400;
+		line-height:19px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:16px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-abt-medium .g-pstyle0 {
+		height:19px;
+	}
+	#g-abt-medium .g-pstyle1 {
+		text-align:justify;
+	}
+	#g-abt-medium .g-pstyle2 {
+		height:19px;
+		text-align:right;
+	}
+	#g-abt-medium .g-pstyle3 {
+		height:19px;
+		text-align:center;
+	}
+	#g-abt-laptop {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-abt-laptop p {
+		font-family:Baskerville;
+		font-weight:400;
+		line-height:17px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:14px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-abt-laptop .g-pstyle0 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+	}
+	#g-abt-laptop .g-pstyle1 {
+		line-height:15px;
+		font-size:13px;
+		text-align:justify;
+	}
+	#g-abt-laptop .g-pstyle2 {
+		height:17px;
+		text-align:right;
+	}
+	#g-abt-laptop .g-pstyle3 {
+		height:17px;
+		text-align:center;
+	}
+	#g-abt-mobile {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-abt-mobile p {
+		font-family:Baskerville;
+		font-weight:400;
+		line-height:13px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:14px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-abt-mobile .g-pstyle0 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:justify;
+	}
+	#g-abt-mobile .g-pstyle1 {
+		line-height:19px;
+		font-size:16px;
+		text-align:justify;
+	}
+	#g-abt-mobile .g-pstyle2 {
+		line-height:17px;
+		text-align:justify;
+	}
+	#g-abt-mobile .g-pstyle3 {
+		line-height:17px;
+		height:17px;
+	}
+	#g-abt-mobile .g-pstyle4 {
+		height:13px;
+	}
+
+</style>
+
+<div id="g-abt-box" class="ai2html">
+
+	<!-- Artboard: medium -->
+	<div id="g-abt-medium" class="g-artboard" style="width:620px; height:425px;" data-aspect-ratio="1.459" data-min-width="620">
+<div style=""></div>
+		<img id="g-abt-medium-img" class="g-aiImg" alt="" src="abt-medium.png"/>
+<!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-aiImg" version="1.2" baseProfile="tiny" id="g-abt-medium-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 620 425" xml:space="preserve">
+<g>
+	<g id="step4" data-name="step4">
+		<g id="step4-2" data-name="step4">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M314.019,176.541c0,0,16.038,32.913,20.734,55.231"/>
+			<g>
+				<polygon points="331.091,231.416 335.625,236.723 337.955,230.144 				"/>
+			</g>
+		</g>
+	</g>
+	<g id="step5" data-name="step5">
+		<g id="step5-2" data-name="step5">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M413.761,192.772c4.733,0,43.286-6.069,66.898-24.531"/>
+			<g>
+				<polygon points="482.089,171.55 484.5,165 477.622,166.186 				"/>
+			</g>
+		</g>
+	</g>
+	<g id="step6" data-name="step6">
+		<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M497.625,301.723c4.047,2.662,21.694,13.222,22.857,39.25"/>
+		<g>
+			<polygon points="516.932,340.001 520.5,346 523.913,339.911 			"/>
+		</g>
+	</g>
+</g>
+<style>
+#g-abt-medium-interactions-img rect, #g-abt-medium-interactions-img circle, #g-abt-medium-interactions-img path, #g-abt-medium-interactions-img line, #g-abt-medium-interactions-img polyline, #g-abt-medium-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+
+		<div id="g-ai0-1" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:5.3011%;margin-top:-20.5px;left:1.2105%;width:402px;">
+			<p class="g-pstyle0">Ages at which American Ballet Theatre&rsquo;s principal dancers </p>
+			<p class="g-pstyle0">reached each milestone</p>
+		</div>
+		<div id="g-ai0-2" class="g-Layer_1 g-aiAbs" style="top:10.5882%;left:49.2564%;width:2.9032%;">
+			<p class="g-pstyle1">10</p>
+		</div>
+		<div id="g-ai0-3" class="g-Layer_1 g-aiAbs" style="top:10.5882%;left:68.4177%;width:2.7419%;">
+			<p class="g-pstyle1">20</p>
+		</div>
+		<div id="g-ai0-4" class="g-Layer_1 g-aiAbs" style="top:10.5882%;left:87.0137%;width:2.9032%;">
+			<p class="g-pstyle1">30</p>
+		</div>
+		<div id="g-ai0-5" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:19.5129%;margin-top:-10.9px;right:67.1069%;width:146px;">
+			<p class="g-pstyle2">Became a principal</p>
+		</div>
+		<div id="g-ai0-6" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:25.8658%;margin-top:-10.9px;right:67.1056%;width:128px;">
+			<p class="g-pstyle2">Became a soloist</p>
+		</div>
+		<div id="g-ai0-7" class="g-step4-text g-aiAbs g-aiPointText" style="top:34.3835%;margin-top:-30.1px;left:51.0723%;margin-left:-91.5px;width:183px;">
+			<p class="g-pstyle3">Only four of ABT's </p>
+			<p class="g-pstyle3">principal dancers trained</p>
+			<p class="g-pstyle3">full-time at its school</p>
+		</div>
+		<div id="g-ai0-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:32.2188%;margin-top:-10.9px;right:67.1179%;width:187px;">
+			<p class="g-pstyle2">Joined the corps de ballet</p>
+		</div>
+		<div id="g-ai0-9" class="g-step5-text g-aiAbs g-aiPointText" style="top:40.7364%;margin-top:-30.1px;left:88.3092%;margin-left:-81.5px;width:163px;">
+			<p class="g-pstyle3">All but two principals </p>
+			<p class="g-pstyle3">were part of the </p>
+			<p class="g-pstyle3">studio company</p>
+		</div>
+		<div id="g-ai0-10" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:38.5717%;margin-top:-10.9px;right:67.1346%;width:165px;">
+			<p class="g-pstyle2">Became an apprentice</p>
+		</div>
+		<div id="g-ai0-11" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:44.9246%;margin-top:-10.9px;right:67.1333%;width:215px;">
+			<p class="g-pstyle2">Joined ABT Studio Company</p>
+		</div>
+		<div id="g-ai0-12" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:51.5129%;margin-top:-10.9px;right:67.1396%;width:213px;">
+			<p class="g-pstyle2">Principal at another company</p>
+		</div>
+		<div id="g-ai0-13" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.8658%;margin-top:-10.9px;right:67.1006%;width:202px;">
+			<p class="g-pstyle2">Studied at ABT JKO school</p>
+		</div>
+		<div id="g-ai0-14" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:64.2188%;margin-top:-10.9px;right:67.2152%;width:215px;">
+			<p class="g-pstyle2">Studied at a prestigious school</p>
+		</div>
+		<div id="g-ai0-15" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:70.5717%;margin-top:-10.9px;right:67.1346%;width:198px;">
+			<p class="g-pstyle2">Joined a different company</p>
+		</div>
+		<div id="g-ai0-16" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:76.9246%;margin-top:-10.9px;right:67.2031%;width:123px;">
+			<p class="g-pstyle2">Started training</p>
+		</div>
+		<div id="g-ai0-17" class="g-step6-text g-aiAbs g-aiPointText" style="top:88.9717%;margin-top:-30.1px;left:81.9769%;margin-left:-101.5px;width:203px;">
+			<p class="g-pstyle3">James Whiteside started his </p>
+			<p class="g-pstyle3">career at Boston Ballet and </p>
+			<p class="g-pstyle3">was a prinicpal there</p>
+		</div>
+	</div>
+
+	<!-- Artboard: laptop -->
+	<div id="g-abt-laptop" class="g-artboard" style="width:490px; height:350px;" data-aspect-ratio="1.4" data-min-width="490" data-max-width="619">
+<div style=""></div>
+		<img id="g-abt-laptop-img" class="g-aiImg" alt="" src="abt-laptop.png"/>
+<!-- Generator: Adobe Illustrator 24.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-aiImg" version="1.2" baseProfile="tiny" id="g-abt-laptop-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 490 350" xml:space="preserve">
+<g>
+	<g id="step4-3" data-name="step4">
+		<g id="step4-4" data-name="step4">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M250.394,134.818c0,0,16.038,32.913,20.734,55.231"/>
+			<g>
+				<polygon points="267.467,189.693 272,195 274.331,188.421 				"/>
+			</g>
+		</g>
+	</g>
+	<g id="step5-3" data-name="step5">
+		<g id="step5-4" data-name="step5">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M327,168c0-0.941,7.962,14.043,32.206,22.484"/>
+			<g>
+				<polygon points="357.174,193.46 364,192 359.324,186.818 				"/>
+			</g>
+		</g>
+	</g>
+	<g id="step6-2" data-name="step6">
+		<g id="step6-3" data-name="step6">
+			<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M396,244c4.623,0,15.231,11.114,16.013,30.972"/>
+			<g>
+				<polygon points="408.453,273.988 412,280 415.433,273.923 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+<style>
+#g-abt-laptop-interactions-img rect, #g-abt-laptop-interactions-img circle, #g-abt-laptop-interactions-img path, #g-abt-laptop-interactions-img line, #g-abt-laptop-interactions-img polyline, #g-abt-laptop-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+
+		<div id="g-ai1-1" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:6.6881%;margin-top:-23.4px;left:1.3072%;width:449px;">
+			<p class="g-pstyle0">Ages at which American Ballet Theatre&rsquo;s principal dancers </p>
+			<p class="g-pstyle0">reached each milestone</p>
+		</div>
+		<div id="g-ai1-2" class="g-Layer_1 g-aiAbs" style="top:14%;left:50.9184%;width:2.8571%;">
+			<p class="g-pstyle1">10</p>
+		</div>
+		<div id="g-ai1-3" class="g-Layer_1 g-aiAbs" style="top:14%;left:69.2857%;width:2.6531%;">
+			<p class="g-pstyle1">20</p>
+		</div>
+		<div id="g-ai1-4" class="g-Layer_1 g-aiAbs" style="top:14.2857%;left:87.1111%;width:2.8571%;">
+			<p class="g-pstyle1">30</p>
+		</div>
+		<div id="g-ai1-5" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:22.2146%;margin-top:-9.8px;right:64.8615%;width:130px;">
+			<p class="g-pstyle2">Became a principal</p>
+		</div>
+		<div id="g-ai1-6" class="g-step4-text g-aiAbs g-aiPointText" style="top:30.7288%;margin-top:-26.6px;left:51.5422%;margin-left:-81px;width:162px;">
+			<p class="g-pstyle3">Only four of ABT's </p>
+			<p class="g-pstyle3">principal dancers trained</p>
+			<p class="g-pstyle3">full-time at its school</p>
+		</div>
+		<div id="g-ai1-7" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.9289%;margin-top:-9.8px;right:64.9111%;width:114px;">
+			<p class="g-pstyle2">Became a soloist</p>
+		</div>
+		<div id="g-ai1-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:33.9289%;margin-top:-9.8px;right:64.8483%;width:166px;">
+			<p class="g-pstyle2">Joined the corps de ballet</p>
+		</div>
+		<div id="g-ai1-9" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:39.6431%;margin-top:-9.8px;right:64.8156%;width:147px;">
+			<p class="g-pstyle2">Became an apprentice</p>
+		</div>
+		<div id="g-ai1-10" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:45.6431%;margin-top:-9.8px;right:64.7632%;width:191px;">
+			<p class="g-pstyle2">Joined ABT Studio Company</p>
+		</div>
+		<div id="g-ai1-11" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:51.6431%;margin-top:-9.8px;right:64.8212%;width:189px;">
+			<p class="g-pstyle2">Principal at another company</p>
+		</div>
+		<div id="g-ai1-12" class="g-step5-text g-aiAbs g-aiPointText" style="top:59.5859%;margin-top:-26.6px;left:87.3938%;margin-left:-73px;width:146px;">
+			<p class="g-pstyle3">All but two principals </p>
+			<p class="g-pstyle3">were part of the </p>
+			<p class="g-pstyle3">studio company</p>
+		</div>
+		<div id="g-ai1-13" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:57.3574%;margin-top:-9.8px;right:64.8545%;width:179px;">
+			<p class="g-pstyle2">Studied at ABT JKO school</p>
+		</div>
+		<div id="g-ai1-14" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:63.3574%;margin-top:-9.8px;right:64.8539%;width:191px;">
+			<p class="g-pstyle2">Studied at a prestigious school</p>
+		</div>
+		<div id="g-ai1-15" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:69.0717%;margin-top:-9.8px;right:64.7901%;width:176px;">
+			<p class="g-pstyle2">Joined a different company</p>
+		</div>
+		<div id="g-ai1-16" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:75.0717%;margin-top:-9.8px;right:64.7357%;width:111px;">
+			<p class="g-pstyle2">Started training</p>
+		</div>
+		<div id="g-ai1-17" class="g-step6-text g-aiAbs g-aiPointText" style="top:88.7288%;margin-top:-26.6px;left:82.8033%;margin-left:-90.5px;width:181px;">
+			<p class="g-pstyle3">James Whiteside started his </p>
+			<p class="g-pstyle3">career at Boston Ballet and </p>
+			<p class="g-pstyle3">was a prinicpal there</p>
+		</div>
+	</div>
+
+	<!-- Artboard: mobile -->
+	<div id="g-abt-mobile" class="g-artboard" style="max-width: 375px;max-height: 471px" data-aspect-ratio="0.797" data-min-width="0" data-max-width="489">
+<div style="padding: 0 0 125.5467% 0;"></div>
+		<img id="g-abt-mobile-img" class="g-aiImg" alt="" src="abt-mobile.png"/>
+		<div id="g-ai2-1" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:5.3968%;margin-top:-23.4px;left:1.1776%;width:350px;">
+			<p class="g-pstyle0">Ages at which today's ABT principal dancers </p>
+			<p class="g-pstyle0">reached each milestone</p>
+		</div>
+		<div id="g-ai2-2" class="g-Layer_1 g-aiAbs" style="top:11.4698%;left:24.316%;width:4.2667%;">
+			<p class="g-pstyle1">10</p>
+		</div>
+		<div id="g-ai2-3" class="g-Layer_1 g-aiAbs" style="top:11.4698%;left:52.8667%;width:4.2667%;">
+			<p class="g-pstyle2">20</p>
+		</div>
+		<div id="g-ai2-4" class="g-Layer_1 g-aiAbs" style="top:11.4698%;left:81.1534%;width:4.2667%;">
+			<p class="g-pstyle2">30</p>
+		</div>
+		<div id="g-ai2-5" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:19.0635%;margin-top:-9.8px;left:2.556%;width:130px;">
+			<p class="g-pstyle3">Became a principal</p>
+		</div>
+		<div id="g-ai2-6" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:27.3473%;margin-top:-9.8px;left:2.556%;width:114px;">
+			<p class="g-pstyle3">Became a soloist</p>
+		</div>
+		<div id="g-ai2-7" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:35.631%;margin-top:-9.8px;left:1.9581%;width:166px;">
+			<p class="g-pstyle3">Joined the corps de ballet</p>
+		</div>
+		<div id="g-ai2-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:43.9148%;margin-top:-9.8px;left:2.556%;width:147px;">
+			<p class="g-pstyle3">Became an apprentice</p>
+		</div>
+		<div id="g-ai2-9" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:52.1986%;margin-top:-9.8px;left:1.9581%;width:159px;">
+			<p class="g-pstyle3">Joined Studio Company</p>
+		</div>
+		<div id="g-ai2-10" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:61.8354%;margin-top:-14.1px;left:2.556%;width:149px;">
+			<p class="g-pstyle4">Promoted to principal </p>
+			<p class="g-pstyle4">at another company</p>
+		</div>
+		<div id="g-ai2-11" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:70.1192%;margin-top:-14.1px;left:1.9581%;width:116px;">
+			<p class="g-pstyle4">Studied at ABT </p>
+			<p class="g-pstyle4">JKO school</p>
+		</div>
+		<div id="g-ai2-12" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:78.403%;margin-top:-14.1px;left:2.556%;width:120px;">
+			<p class="g-pstyle4">Studied at a </p>
+			<p class="g-pstyle4">prestigious school</p>
+		</div>
+		<div id="g-ai2-13" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:86.6867%;margin-top:-14.1px;left:1.9581%;width:127px;">
+			<p class="g-pstyle4">Joined a </p>
+			<p class="g-pstyle4">different company</p>
+		</div>
+		<div id="g-ai2-14" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:92.9802%;margin-top:-9.8px;left:2.5331%;width:111px;">
+			<p class="g-pstyle3">Started training</p>
+		</div>
+	</div>
+
+<!-- Custom HTML -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+<style> .hidden{visibility:hidden;} </style>
+
+</div>
+
+<!-- End ai2html - 2022-05-04 22:31 -->
+
+
+</div>
+</div>
+
+<div class="scrolly-overlay">
+	<div class="step" id="step-three">
+		<p>On the other hand, most of ABT’s principal dancers never attended ABT’s Jacqueline Kennedy Onassis School.
+		</p>
+	</div>
+	<div class="step" id="step-four">
+		<p>Instead, they joined ABT through the studio company in their late teenage years. Because of this different timeline, ABT contains more international talent than NYCB. 
+		</p>
+
+	</div>
+	<div class="step" id="step-five">
+		<p>But there are exceptions to this pattern of needing to be part of the studio company, like James Whiteside. Whiteside joined Boston Ballet II — Boston Ballet’s second company — and then eventually became a principal there. He later joined NYCB as a soloist and was promoted to principal a year later.
+		</p>
+	</div>
+  </div>
+  </section>
+
+  </div>
+
+  <div class="container">
+
+	<p>The journey to become a principal dancer is a long and winding one, as pictured here. In other companies, these paths become too complicated to even visualize, as dancers jump between several schools and companies to reach the ultimate goal of being a principal dancer. Even though ballet’s physical demands means that most follow a similar training journey, it is refreshing to see the actual paths of these dancers and delight in their nuances.
     </p>
 
     <ul>
@@ -131,10 +1062,226 @@
 
     <h3>Methodological notes</h3>
     <em>
-    <p style="padding-bottom:10px;">Data for this project was manually collected from ABT and NYCB's website. The ages are approximated using birth years or ages that were available online. Adrian Danchig-Waring, a principal at NYCB, was not included in the chart because his birth year and age weren't online.
+    <p style="padding-bottom:10px;">Data for this project was manually collected from ABT and NYCB's website as of February 2022. Gonzalo Garcia retired from the company later that same month. The ages are approximated using birth years or ages that were available online. Adrian Danchig-Waring, a principal at NYCB, was not included in the chart because his birth year and age weren't online.
       All code and data for this project is available on <a href="https://github.com/ilenapeng/path-to-principal/">GitHub</a>.
     </p>
 
-    </em>
-    </div>
+  </div>
+
+  <script>
+  /* Scrollytelling code goes under here */
+  // there's a step zero too but I'm opting to just start because it would briefly show all the layers before hitting step zero
+  // I'm using step zero just for scrolling up purposes
+  
+  // ON START, STEP 1:
+  
+  d3.selectAll("[data-name='step1']").classed('hidden', false)
+  d3.selectAll('.g-step1-text').classed('hidden',false)
+  d3.selectAll("[data-name='step2']").classed('hidden', true)
+  d3.selectAll('.g-step2-text').classed('hidden',true)
+  d3.selectAll("[data-name='step3']").classed('hidden', true)
+  d3.selectAll('.g-step3-text').classed('hidden',true)
+  
+  // ADD STEP ZERO TO BE CONSISTENT WITH START WHEN SCROLLING UP
+  d3.select("#step-zero").on('stepin', function(e){
+  d3.selectAll("[data-name='step1']").classed('hidden', false)
+  d3.selectAll('.g-step1-text').classed('hidden',false)
+
+  d3.selectAll("[data-name='step2']").classed('hidden', true)
+  d3.selectAll('.g-step2-text').classed('hidden',true)
+
+  d3.selectAll("[data-name='step3']").classed('hidden', true)
+  d3.selectAll('.g-step3-text').classed('hidden',true)
+
+  d3.selectAll("[data-name='step4']").classed('hidden', true)
+  d3.selectAll('.g-step4-text').classed('hidden',true)
+
+  d3.selectAll("[data-name='step5']").classed('hidden', true)
+  d3.selectAll('.g-step5-text').classed('hidden',true)
+
+  d3.selectAll("[data-name='step6']").classed('hidden', true)
+  d3.selectAll('.g-step6-text').classed('hidden',true)
+
+  })
+  
+  /// FIRST (TECHNICALLY SECOND STEP)
+  d3.select("#step-one").on('stepin', function(e){
+  // MAKE STEP ONE DISAPPEAR
+  d3.selectAll("[data-name='step1']").classed('hidden', true)
+  d3.selectAll('.g-step1-text').classed('hidden',true)
+  
+  // ADD STEP TWO ELEMENTS
+  d3.selectAll("[data-name='step2']").classed('hidden', false)
+  d3.selectAll('.g-step2-text').classed('hidden',false)
+  
+  // UNDO STEP THREE ELEMENTS FOR WHEN SCROLLING UP
+  d3.selectAll("[data-name='step3']").classed('hidden', true)
+  d3.selectAll('.g-step3-text').classed('hidden',true)
+  
+  })
+  
+//   /// SECOND (TECHNICALLY THIRD STEP)
+//   d3.select("#step-two").on('stepin', function(e){
+//   // UNDO STEP TWO ELEMENTS
+//   d3.selectAll("[data-name='step2']").classed('hidden', true)
+//   d3.selectAll('.g-step2-text').classed('hidden',true)
+  
+//   // ADD STEP THREE ELEMENTS
+//   d3.selectAll("[data-name='step3']").classed('hidden', false)
+//   d3.selectAll('.g-step3-text').classed('hidden',false)
+
+//   // UNDO STEP FOUR ELEMENTS FOR WHEN SCROLLING UP
+//   d3.selectAll("[data-name='step4']").classed('hidden', true)
+//   d3.selectAll('.g-step4-text').classed('hidden',true)
+  
+//   })
+
+ /// THIRD (TECHNICALLY FOURTH STEP)
+  d3.select("#step-three").on('stepin', function(e){
+  
+  // ADD STEP FOUR ELEMENTS
+  d3.selectAll("[data-name='step4']").classed('hidden', false)
+  d3.selectAll('.g-step4-text').classed('hidden',false)
+
+  // UNDO STEP FIVE ELEMENTS FOR WHEN SCROLLING UP
+  d3.selectAll("[data-name='step5']").classed('hidden', true)
+  d3.selectAll('.g-step5-text').classed('hidden',true)
+  
+  })
+
+   /// FOURTH (TECHNICALLY FIFTH STEP)
+   d3.select("#step-four").on('stepin', function(e){
+
+  // HIDE STEP FOUR 
+  d3.selectAll("[data-name='step4']").classed('hidden', true)
+  d3.selectAll('.g-step4-text').classed('hidden',true)
+  
+  // ADD STEP FIVE ELEMENTS
+  d3.selectAll("[data-name='step5']").classed('hidden', false)
+  d3.selectAll('.g-step5-text').classed('hidden',false)
+
+  // UNDO STEP SIX ELEMENTS FOR WHEN SCROLLING UP
+  d3.selectAll("[data-name='step6']").classed('hidden', true)
+  d3.selectAll('.g-step6-text').classed('hidden',true)
+  
+  })
+
+  /// LAST STEP (TECHNICALLY SIXTH STEP)
+   d3.select("#step-five").on('stepin', function(e){
+  
+  // ADD STEP SIX ELEMENTS
+  d3.selectAll("[data-name='step6']").classed('hidden', false)
+  d3.selectAll('.g-step6-text').classed('hidden',false)
+
+  // UNDO STEP FIVE ELEMENTS FOR WHEN SCROLLING UP
+  d3.selectAll("[data-name='step5']").classed('hidden', true)
+  d3.selectAll('.g-step5-text').classed('hidden',true)
+  
+  })
+
+
+  
+  // NO CHANGES FOR LAST STEP, JUST CHANGE TEXT!
+  
+  </script>
+
+<script>
+const scroller = scrollama();
+
+scroller
+.setup({
+	step: "#scrolly .scrolly-overlay .step",
+	offset: 0.5,
+	debug: false
+})
+.onStepEnter(function({ element, index, direction}) {
+	const event = new CustomEvent('stepin', { detail: { direction: direction } })
+	element.dispatchEvent(event);
+})
+.onStepExit(function({ element, index, direction }) {
+	const event = new CustomEvent('stepout', { detail: { direction: direction } })
+	element.dispatchEvent(event);
+});
+
+window.addEventListener("resize", scroller.resize);
+</script>
+
+
+<!-- ai2html resizer script -->
+
+<script type="text/javascript">
+(function() {
+// only want one resizer on the page
+if (document.documentElement.className.indexOf("g-resizer-v3-init") > -1) return;
+document.documentElement.className += " g-resizer-v3-init";
+// require IE9+
+if (!("querySelector" in document)) return;
+function resizer() {
+  var elements = Array.prototype.slice.call(document.querySelectorAll(".g-artboard[data-min-width]")),
+	  widthById = {};
+  elements.forEach(function(el) {
+	  var parent = el.parentNode,
+		  width = widthById[parent.id] || parent.getBoundingClientRect().width,
+		  minwidth = el.getAttribute("data-min-width"),
+		  maxwidth = el.getAttribute("data-max-width");
+	  widthById[parent.id] = width;
+
+	  if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+		  el.style.display = "block";
+	  } else {
+		  el.style.display = "none";
+	  }
+  });
+  try {
+	  if (window.parent && window.parent.$) {
+		  window.parent.$("body").trigger("resizedcontent", [window]);
+	  }
+	  if (window.require) {
+		  require(['foundation/main'], function() {
+			  require(['shared/interactive/instances/app-communicator'], function(AppCommunicator) {
+				  AppCommunicator.triggerResize();
+			  });
+		  });
+	  }
+  } catch(e) { console.log(e); }
+}
+
+document.addEventListener('DOMContentLoaded', resizer);
+// feel free to replace throttle with _.throttle, if available
+window.addEventListener('resize', throttle(resizer, 200));        
+
+function throttle(func, wait) {
+  // from underscore.js
+  var _now = Date.now || function() { return new Date().getTime(); },
+	  context, args, result, timeout = null, previous = 0;
+  var later = function() {
+	  previous = _now();
+	  timeout = null;
+	  result = func.apply(context, args);
+	  if (!timeout) context = args = null;
+  };
+  return function() {
+	  var now = _now(), remaining = wait - (now - previous);
+	  context = this;
+	  args = arguments;
+	  if (remaining <= 0 || remaining > wait) {
+		  if (timeout) {
+			  clearTimeout(timeout);
+			  timeout = null;
+		  }
+		  previous = now;
+		  result = func.apply(context, args);
+		  if (!timeout) context = args = null;
+	  } else if (!timeout && options.trailing !== false) {
+		  timeout = setTimeout(later, remaining);
+	  }
+	  return result;
+  };
+}
+
+
+})();
+</script>
+
 </body>
+</html>
