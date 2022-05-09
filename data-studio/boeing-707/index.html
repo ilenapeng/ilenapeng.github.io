@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+
+    <link rel="shortcut icon" href="favicon.ico?" type="image/x-icon" />
+    <title>The History of the Boeing 707</title>
+    <base target="_blank">
+  
+    <meta property="og:title" content="The History of the Boeing 707">
+    <meta property="og:description" content="The world's first successful commercial passenger plane">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://github.com/ilenapeng/ilenapeng.github.io/blob/main/images/california-kelp-forests.png?raw=true">
+    <meta name="twitter:card" content="summary_image">
+    <meta name="twitter:creator" content="@ilenapeng">
+
+    <style>
+      body {
+        padding: 0;
+      }
+
+      #scrolly {
+        position: relative;
+      }
+
+      .scrolly-overlay {
+        position: relative;
+        padding: 0;
+        max-width: 35rem;
+        margin: 0 auto;
+      }
+
+      .sticky-thing {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 0;
+        top: 0;
+        height: 100vh;
+        /* Center everything inside */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap');
+      
+      body{font-family: 'Lato', sans-serif;}
+      
+      .step {
+        margin: 0 auto 2rem auto;
+        margin-bottom: 25rem;
+        background-color: #eee;
+        background-color: #fff;
+        color: black;
+      }
+      
+      .step p {
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.25rem;
+      }
+      
+      h1 {font-size: 1.5rem; color:#0133A1}
+      h2 {font-size: 1.25rem;}
+      p {font-size: 1.25rem;}
+      a {color:#0133A1}
+
+      /* When it's less than 700 pixels wide, do normal scrollytelling */
+      @media only screen and (min-width: 700px) {
+        #scrolly.side-by-side {
+          display: flex;
+        }
+
+        #scrolly.side-by-side > div {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+          padding: 0.75em;
+        }
+
+        #scrolly.side-by-side .scrolly-overlay {
+          margin-top: 70vh;
+          order: 0;
+          /* Change these to adjust sizing options */
+          min-width: 15rem;
+          max-width: 20rem;
+        }
+
+        #scrolly.side-by-side .sticky-thing {
+          order: 1;
+          flex-grow: 2;
+        }
+      }
+
+      model-viewer {
+        width: 100%;
+        height: 100vh;
+      }
+
+      .container{max-width:60%; margin:auto;}
+	    @media (max-width: 490px) {
+        .container{max-width:98%}
+      }
+    </style>
+	<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+  <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+
+  </head>
+
+  <body>
+<div class="container">
+	<h1>A History of the Boeing 707</h1>
+
+  <p>The Boeing 707, which made its first commercial flight in 1958, is <a href="https://www.britannica.com/technology/Boeing-707">considered</a> to be the world's first successful commercial passenger jet.
+  </p>
+
+  <p>The plane was in production until 1991 and its innovations, like more passenger capacity and greater range, helped usher in the type of air travel we see today.
+  </p>
+</div>
+
+      <section id="scrolly">
+        <div class="sticky-thing">
+
+<!-- 3D stuff goes below this line -->
+<model-viewer bounds="tight" enable-pan src="model.glb" ar ar-modes="webxr scene-viewer quick-look" poster="poster.webp" shadow-intensity="1" exposure="1">
+  <div class="progress-bar hide" slot="progress-bar">
+      <div class="update-bar"></div>
+  </div>
+  <button slot="ar-button" id="ar-button">
+      View in your space
+  </button>
+  <div id="ar-prompt">
+      <img src="ar_hand_prompt.png">
+  </div>
+</model-viewer>  
+
+<!-- 3D stuff goes above this line -->
+
+        </div>
+
+        <div class="scrolly-overlay">
+          <div class="step" id="step-one">
+            <p>The plane's fuselage - which carries cargo and people - was 100 feet long, making it the largest passenger cabin at the time.</p>
+          </div>
+          <div class="step" id="step-two">
+            <p>The plane's wing was also designed so that it could fly about 20 miles per hour faster than Boeing's <a href="https://www.boeing.com/history/products/dc-8.page">DC-8 plane.</a></p>
+          </div>
+          <div class="step" id="step-three">
+            <p>Boeing also customized the 707 for specific airlines, like installing larger engines for high altitude flights done by Braniff International Airways, a now-defunct American airline.</p>
+          </div>
+          <div class="step" id="step-four">
+            <p>Later, the 707 was modified for shorter routes and was renamed the 720. The fuselage became shorter and the leading edge flaps on the wing changed.</p>
+          </div>
+        </div>
+      </section>
+
+<div class="container">
+  <p>The last American Boeing 707 flight was a 1983 flight from Miami to NYC, though the last commercial flight was in 2013. Today, the plane is still in <a href="https://simpleflying.com/boeing-707-airlines/">military use</a>.</p>
+  <p style="padding-bottom: 20px"><em>Code and files are on <a href="https://github.com/ilenapeng/boeing707-history">GitHub</a>.
+    Historical facts from <a href="https://www.boeing.com/history/products/707.page">Boeing</a> and <a href="https://www.britannica.com/technology/Boeing-707">Britannica</a>.
+  </em></p>
+
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+  <p>test</p>
+</div>
+
+      <script src="script.js"></script>
+      <!-- Loads <model-viewer> for browsers: -->
+      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  
+    <script>
+      
+      /* Scrollytelling code goes under here */
+      var viewer = document.querySelector("model-viewer");
+
+      function unhighlight(materialNumber) {
+      let material = viewer.model.materials[materialNumber]
+      material.pbrMetallicRoughness.setBaseColorFactor(material.originalColor);
+      }
+
+      function highlight(materialNumber, highlightColor=[0.001, 0.051, 0.161]) {
+          if(!viewer.model) {
+            return setTimeout(() => highlight(materialNumber), 100);
+          }
+
+          let material = viewer.model.materials[materialNumber];
+
+          if(!material.originalColor) {
+            material.originalColor = material.pbrMetallicRoughness.baseColorFactor;
+          }
+
+          material.pbrMetallicRoughness.setBaseColorFactor(highlightColor);
+      }
+
+      d3.select("#step-one").on('stepin', function() {
+        viewer.cameraTarget = "0m 0m 0m";
+        viewer.cameraOrbit = "45deg 80deg 0m";
+
+        highlight(4)
+
+        // undo on scroll up
+        unhighlight(1)
+      })
+
+      d3.select("#step-two").on('stepin', function() {
+        viewer.cameraTarget = "0m 0m 0m";
+        viewer.cameraOrbit = "45deg 120deg 50m";
+
+        highlight(1)
+        unhighlight(4)
+
+        // undo on scroll up
+        unhighlight(9)
+      })
+
+      d3.select("#step-three").on('stepin', function() {
+        viewer.cameraTarget = "0m 0m 0m";
+        viewer.cameraOrbit = "45deg 100deg 60m";
+
+        highlight(9)
+        unhighlight(1)
+
+        // undo on scroll up
+        unhighlight(9)
+      })
+
+      d3.select("#step-three").on('stepin', function() {
+        viewer.cameraTarget = "0m 0m 0m";
+        viewer.cameraOrbit = "45deg 100deg 60m";
+
+        highlight(9)
+        unhighlight(1)
+      })
+
+    </script>
+
+
+
+    </script>
+
+<script>
+    const scroller = scrollama();
+
+	scroller
+		.setup({
+			step: "#scrolly .scrolly-overlay .step",
+			offset: 0.75,
+			debug: false
+		})
+		.onStepEnter(function({ element, index, direction}) {
+			const event = new CustomEvent('stepin', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		})
+		.onStepExit(function({ element, index, direction }) {
+			const event = new CustomEvent('stepout', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		});
+
+    </script>
+
+
+<script type="text/javascript">
+  // your code goes in here 
+
+
+</script>
+
+  </body>
+</html>
