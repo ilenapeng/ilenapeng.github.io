@@ -160,14 +160,21 @@
           <div class="step" id="step-three">
             <p>Boeing also customized the 707 for specific airlines, like installing larger engines for high altitude flights done by Braniff International Airways, a now-defunct American airline.</p>
           </div>
-          <div class="step" id="step-four">
+          <!-- <div class="step" id="step-four">
             <p>Later, the 707 was modified for shorter routes and was renamed the 720. The fuselage became shorter and the leading edge flaps on the wing changed.</p>
-          </div>
+          </div> -->
         </div>
       </section>
 
 <div class="container">
+  <p>These customizations, though costly and financially risky for the company, helped make the plane an industry standard. The plane, although intended for medium-range flights, was soon traveling internationally.</p>
+
+  <p>Later, the 707 was also modified to accommodate shorter routes and was renamed the 720. The fuselage became shorter and the leading edge flaps on the wing changed. Turbofan engines were also later installed.</p>
+
   <p>The last American Boeing 707 flight was a 1983 flight from Miami to NYC, though the last commercial flight was in 2013. Today, the plane is still in <a href="https://simpleflying.com/boeing-707-airlines/">military use</a>.</p>
+
+  <p>Even though the Boeing 707 is no longer a passenger plane, it is still memorialized in songs like the Steve Miller Band's "Jet Airliner." The plane's popularity in turn propelled the popularity of air travel, with <a href="https://modernairliners.com/boeing-707/">changes</a> being made to airport terminals, reservation systems and catering - all now ubiquitous aspects of air travel.</p>
+
   <p style="padding-bottom: 20px"><em>Code and files are on <a href="https://github.com/ilenapeng/boeing707-history">GitHub</a>.
     Historical facts from <a href="https://www.boeing.com/history/products/707.page">Boeing</a> and <a href="https://www.britannica.com/technology/Boeing-707">Britannica</a>.
   </em></p>
@@ -242,13 +249,13 @@
         unhighlight(1)
       })
 
-      d3.select("#step-four").on('stepin', function() {
-        viewer.cameraTarget = "0m 0m 0m";
-        viewer.cameraOrbit = "45deg 100deg 60m";
+      // d3.select("#step-four").on('stepin', function() {
+      //   viewer.cameraTarget = "0m 0m 0m";
+      //   viewer.cameraOrbit = "45deg 100deg 60m";
 
-        highlight(6)
-        unhighlight(9)
-      })
+      //   highlight(6)
+      //   unhighlight(9)
+      // })
 
     </script>
 
