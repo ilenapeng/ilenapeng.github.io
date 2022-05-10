@@ -12,7 +12,7 @@
     <meta property="og:title" content="The History of the Boeing 707">
     <meta property="og:description" content="The world's first successful commercial passenger plane">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://github.com/ilenapeng/ilenapeng.github.io/blob/main/images/california-kelp-forests.png?raw=true">
+    <meta property="og:image" content="https://github.com/ilenapeng/ilenapeng.github.io/blob/main/images/boeing-707.png?raw=true">
     <meta name="twitter:card" content="summary_image">
     <meta name="twitter:creator" content="@ilenapeng">
 
@@ -132,7 +132,7 @@
 <!-- 3D stuff goes below this line -->
 <model-viewer bounds="tight" enable-pan src="model.glb" ar ar-modes="webxr scene-viewer quick-look" poster="poster.webp" shadow-intensity="1" exposure="1">
   <div class="progress-bar hide" slot="progress-bar">
-      <div class="update-bar"></div>
+      <!-- <div class="update-bar"></div> -->
   </div>
   <button slot="ar-button" id="ar-button">
       View in your space
@@ -147,6 +147,10 @@
         </div>
 
         <div class="scrolly-overlay">
+          <div class="step" id="step-zero">
+            <!-- empty div just to allow for reset on scroll up -->
+            </div>
+
           <div class="step" id="step-one">
             <p>The plane's fuselage - which carries cargo and people - was 100 feet long, making it the largest passenger cabin at the time.</p>
           </div>
@@ -168,24 +172,6 @@
     Historical facts from <a href="https://www.boeing.com/history/products/707.page">Boeing</a> and <a href="https://www.britannica.com/technology/Boeing-707">Britannica</a>.
   </em></p>
 
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
-  <p>test</p>
 </div>
 
       <script src="script.js"></script>
@@ -216,6 +202,14 @@
           material.pbrMetallicRoughness.setBaseColorFactor(highlightColor);
       }
 
+      d3.select("#step-zero").on('stepin', function() {
+        viewer.cameraTarget = "0m 0m 0m";
+        viewer.cameraOrbit = "-360deg 76.5deg 0m";
+
+        // undo on scroll up
+        unhighlight(4)
+      })
+
       d3.select("#step-one").on('stepin', function() {
         viewer.cameraTarget = "0m 0m 0m";
         viewer.cameraOrbit = "45deg 80deg 0m";
@@ -245,15 +239,15 @@
         unhighlight(1)
 
         // undo on scroll up
-        unhighlight(9)
+        unhighlight(1)
       })
 
-      d3.select("#step-three").on('stepin', function() {
+      d3.select("#step-four").on('stepin', function() {
         viewer.cameraTarget = "0m 0m 0m";
         viewer.cameraOrbit = "45deg 100deg 60m";
 
-        highlight(9)
-        unhighlight(1)
+        highlight(6)
+        unhighlight(9)
       })
 
     </script>
