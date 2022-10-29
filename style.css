@@ -47,7 +47,8 @@ p {
 
 .tool {color: #6B6B6B}
 
-a {text-decoration: none;}
+a {font-weight: 300; text-decoration: none;}
+a.linktitle {font-size:1em;font-weight: 400;text-align:left;}
 em {font-family:'Lato', sans-serif; font-weight:300;}
 span {background-color: rgba(102,143,128,0.5);   font-family: 'Lato', sans-serif;
   font-weight:400}
@@ -79,11 +80,6 @@ article {
     grid-row-gap: 1rem;
     text-align: center;
 }
-
-/* Specifying styles for the writing page */
-article.page a.linktitle {
-font-size:1em;font-family: 'Lato', sans-serif;font-weight: 400;text-align:left;}
-article.page a {font-weight: 300; text-decoration: none;}
 
 /*navbar*/
 .navbar{
