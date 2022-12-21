@@ -44,8 +44,10 @@ p {
   font-weight:300;
   text-align:left;
 }
+#data, #features p {text-transform: capitalize;}
 
-.tool {color: #6B6B6B}
+/* if mentioning tools: */
+/* .tool {color: #6B6B6B} */
 
 a {font-weight: 300; text-decoration: none;}
 a.linktitle {font-size:1em;font-weight: 400;text-align:left;}
@@ -151,8 +153,10 @@ article {
 /*mobile*/
 @media screen and (max-width: 1200px){
   .about {max-width:100%;}
-  .datavis {display: grid; grid-template-columns: 1fr 1fr;grid-gap:5rem;}
-  .projects {display: grid; grid-template-columns: 1fr 1fr;grid-gap:5rem;}
+  .three-col-grid {display: block;}
+  /* for old site */
+  /* .datavis {display: grid; grid-template-columns: 1fr 1fr;grid-gap:5rem;}
+  .projects {display: grid; grid-template-columns: 1fr 1fr;grid-gap:5rem;} */
 }
 
 @media screen and (max-width: 900px){
@@ -160,7 +164,8 @@ article {
   a.linktitle{font-size:0.9em;}
 }
 
-@media screen and (max-width: 700px){
+/* for old site */
+/* @media screen and (max-width: 700px){
   .datavis {display:block;}
   .projects {display:block;}
-}
+} */
