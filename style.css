@@ -35,7 +35,9 @@ h3 {
   font-family: 'Lato', sans-serif;
   color: var(--main-color);
   font-weight: 400;
-  text-align:left;}
+  text-align:left;
+  margin-bottom: 0.3px;
+}
 
 p {
   font-size: 1em;
@@ -44,6 +46,18 @@ p {
   font-weight:300;
   text-align:left;
 }
+
+.sociallinks a {
+  font-family: 'Lato', sans-serif;
+  color: var(--main-color);
+  font-weight: 400;
+}
+
+.highlights p {
+  line-height: 1.2;
+  margin-top: 0.3px;
+}
+
 #data, #features p {text-transform: capitalize;}
 
 /* if mentioning tools: */
@@ -63,8 +77,8 @@ img.vertical{
   object-position: bottom;}
 
 article {
-  padding-left: 12rem;
-  padding-right: 12rem;
+  padding-left: 18rem;
+  padding-right: 18rem;
 }
 
 .three-col-grid {
