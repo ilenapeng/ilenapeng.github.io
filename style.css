@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
-:root {--main-color:#668F80;}
-/* Alternate colors: 388697 6096BA */
+:root {--main-color:#388697;}
+/* Old green color: 668F80 */
+/* Alternate colors: 6096BA FF8E00 */
 
 body * {
   -webkit-box-sizing: border-box;
@@ -40,12 +41,14 @@ h3 {
 }
 
 p {
-  font-size: 1em;
+  font-size: 1.05em;
   text-align: left;
   font-family: 'Lato', sans-serif;
   font-weight:300;
   text-align:left;
 }
+
+em {color:#899499;}
 
 .sociallinks a {
   font-family: 'Lato', sans-serif;
